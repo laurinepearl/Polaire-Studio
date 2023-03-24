@@ -17,8 +17,56 @@ footer {
 	@extend %formulaire;
 }
 
+.sixieme {
+	@extend %messagerie;
+}
+
 .snackbar {
 	@extend %snackbar;
+}
+
+#messagerie {
+	position: fixed;
+	width: 37px;
+	height: 37px;
+	top: 70vh;
+	right: 50px;
+	z-index: 2;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+	.badge {
+		display: none;
+		font-size: 10px;
+		position: absolute;
+		top: -18px;
+		right: -10px;
+		padding: 5px 5px;
+		border-radius: 50%;
+		background: red;
+		color: white;
+	}
+
+	i {
+		color: #f2f2f2;
+		background-color: rgb(41, 178, 188);
+		border-radius: 33px 33px 33px 33px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: 18px;
+		padding-right: 18px;
+		font-size: 2.5em;
+		box-shadow: 0 0 15px rgb(0 0 0 / 60%);
+
+		&:hover {
+			font-size: 2.6em;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-left: 19px;
+			padding-right: 19px;
+		}
+	}
 }
 
 /* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
@@ -208,7 +256,6 @@ footer {
 @media (max-width:1000px) {
 	#galerie {
 		margin: 20vh 15vh 0 15vh;
-
 	}
 }
 
