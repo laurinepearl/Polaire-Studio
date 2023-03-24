@@ -83,16 +83,17 @@
 
         if(!$checklogin) {
 ?>
-<section id="connexion">
-	<img src="../images/blob_orange_devant.svg" class="blob_orange_devant" >
-	 <img src="../images/blob_orange_derriere.svg" class="blob_orange_derriere" >
-	 <img src="../images/blob_bleu_devant.svg" class="blob_bleu_devant" >
-	 <img src="../images/blob_bleu_derriere.svg" class="blob_bleu_derriere" >
 
-	<legend>Connexion</legend>
+<section id="connexion">
+	<!-- <img src="../images/bo/Sans titre.png" class="nuages" > -->
+	 <!-- <img src="../images/bo/blob_orange_derriere.svg" class="blob_orange_derriere" >
+	 <img src="../images/bo/blob_bleu_devant.svg" class="blob_bleu_devant" >
+	 <img src="../images/bo/blob_bleu_derriere.svg" class="blob_bleu_derriere" > -->
+
 	<form method='post' action="choixtable.php">
-		identifiant  : <input type="text" name='login'/>
-		mot de passe : <input type="password" name='mdp'/>
+		<label for="">Connexion</label> <br/>
+	<input type="text" name='login' placeholder="Identifiant" required/>
+	<input type="password" name='mdp' placeholder="mot de passe" required/>
 		<input type='submit' name='validelogin' value='Valider'>
 	</form>
 </section>
