@@ -22,7 +22,7 @@ function pad( number )
 {
 	if ( number < 10 )
 	{
-		return '0' + number;
+		return "0" + number;
 	}
 	return number;
 }
@@ -35,9 +35,9 @@ function getCurrentDate( element, asString )
 		if ( asString )
 		{
 			const day = date.getDay() - 1;
-			return element.textContent = weekdays[ day === -1 ? 6 : day ] + ' ' + date.getDate() + " " + months[ date.getMonth() ] + " " + date.getFullYear();
+			return element.textContent = weekdays[ day === -1 ? 6 : day ] + " " + date.getDate() + " " + months[ date.getMonth() ] + " " + date.getFullYear();
 		}
-		return element.value = date.getFullYear() + '-' + ( pad( date.getMonth() + 1 ) ) + '-' + pad( date.getDate() );
+		return element.value = date.getFullYear() + "-" + ( pad( date.getMonth() + 1 ) ) + "-" + pad( date.getDate() );
 	}
 	return date;
 }
@@ -48,7 +48,7 @@ function generateCalendar()
 	$( ".pasdedate" ).hide();
 
 	// Pega um calendário e se já existir o remove
-	const calendar = document.getElementById( 'calendar' );
+	const calendar = document.getElementById( "calendar" );
 	if ( calendar )
 	{
 		calendar.remove();
@@ -59,11 +59,11 @@ function generateCalendar()
 	table.id = "calendar";
 
 	// Cria os headers referentes aos dias da semana
-	const trHeader = document.createElement( 'tr' );
-	trHeader.className = 'weekends';
+	const trHeader = document.createElement( "tr" );
+	trHeader.className = "weekends";
 	weekdays.map( week =>
 	{
-		const th = document.createElement( 'th' );
+		const th = document.createElement( "th" );
 		const w = document.createTextNode( week.substring( 0, 3 ) );
 		th.appendChild( w );
 		trHeader.appendChild( th );
@@ -87,16 +87,16 @@ function generateCalendar()
 	).getDate();
 
 	let tr = document.createElement( "tr" );
-	let td = '';
-	let empty = '';
-	let btn = document.createElement( 'button' );
+	let td = "";
+	let empty = "";
+	let btn = document.createElement( "button" );
 	let week = 0;
 
 	// Se o dia da semana do primeiro dia do mês for maior que 0(primeiro dia da semana);
 	while ( week < weekDay )
 	{
 		td = document.createElement( "td" );
-		empty = document.createTextNode( ' ' );
+		empty = document.createTextNode( " " );
 		td.appendChild( empty );
 		tr.appendChild( td );
 		week++;
@@ -108,11 +108,11 @@ function generateCalendar()
 		// Enquanto o dia da semana for < 7, ele vai adicionar colunas na linha da semana
 		while ( week < 7 )
 		{
-			td = document.createElement( 'td' );
+			td = document.createElement( "td" );
 			let text = document.createTextNode( i );
-			btn = document.createElement( 'button' );
+			btn = document.createElement( "button" );
 			btn.className = "btn-day";
-			btn.addEventListener( 'click', function () { changeDate( this ); } );
+			btn.addEventListener( "click", function () { changeDate( this ); } );
 			week++;
 
 			if ( week == 6 || week == 7 )
@@ -133,7 +133,7 @@ function generateCalendar()
 			}
 			else
 			{
-				text = document.createTextNode( ' ' );
+				text = document.createTextNode( " " );
 				td.appendChild( text );
 			}
 			tr.appendChild( td );
@@ -148,13 +148,13 @@ function generateCalendar()
 		week = 0;
 	}
 	// Adiciona a tabela a div que ela deve pertencer
-	const content = document.getElementById( 'table' );
+	const content = document.getElementById( "table" );
 	if ( content === null ) return;
 	checkDate( date );
 	content.appendChild( table );
 	changeActive();
 	changeHeader( date );
-	document.getElementById( 'date' ).textContent = date;
+	document.getElementById( "date" ).textContent = date;
 	getCurrentDate( document.getElementById( "currentDate" ), true );
 	getCurrentDate( document.getElementById( "date" ), false );
 }
@@ -185,18 +185,18 @@ function changeHeader( dateHeader )
 // Função para mudar a cor do botão do dia que está ativo
 function changeActive()
 {
-	let btnList = document.querySelectorAll( 'button.active' );
+	let btnList = document.querySelectorAll( "button.active" );
 	btnList.forEach( btn =>
 	{
-		btn.classList.remove( 'active' );
+		btn.classList.remove( "active" );
 	} );
-	btnList = document.getElementsByClassName( 'btn-day' );
+	btnList = document.getElementsByClassName( "btn-day" );
 	for ( let i = 0; i < btnList.length; i++ )
 	{
 		const btn = btnList[ i ];
 		if ( btn.textContent === ( date.getDate() ).toString() )
 		{
-			btn.classList.add( 'active' );
+			btn.classList.add( "active" );
 		}
 	}
 }
@@ -270,7 +270,7 @@ $( ".heure" ).click( function ()
 	var date = $( ".text-field" ).val();
 	var heure = $( this ).html();
 
-	$( ".heure" ).append( '<form action="formulaire_rdv.php" method="POST" />' );
+	$( ".heure" ).append( '<form method="POST" />' );
 	$( ".heure form" ).append( '<input type="hidden" name="id_tatoueur" value="' + id + '" />' );
 	$( ".heure form" ).append( '<input type="hidden" name="date" value="' + date + '" />' );
 	$( ".heure form" ).append( '<input type="hidden" name="heure" value="' + heure + '" />' );
