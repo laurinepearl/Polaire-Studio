@@ -1,30 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap");
 @import "../variable";
 @import "../templates";
 
-
-:root{
-    --main-color:#000000;
-    --black:#000000;
-    --bg:#ffffff;
-    --border:.1rem solid rgba(255,255,255,.3);
+:root {
+    --main-color: #000000;
+    --black: #000000;
+    --bg: #ffffff;
+    --border: .1rem solid rgba(255, 255, 255, .3);
 }
 
-
-.header
-{
+.header {
     @extend %header;
 }
 
 // Pied de page général.
-footer{
+footer {
     @extend %footer;
 }
 
-#co
-{
+#co {
     @extend %formulaire;
 }
 
@@ -32,18 +28,16 @@ footer{
     @extend %messagerie;
 }
 
-.snackbar{
+.snackbar {
     @extend %snackbar;
-
 }
-
 
 #messagerie {
     position: fixed;
-    width:37px;
+    width: 37px;
     height: 37px;
     top: 70vh;
-    right:50px;
+    right: 50px;
     z-index: 2;
     background-color: transparent;
     border: none;
@@ -59,56 +53,52 @@ footer{
         border-radius: 50%;
         background: red;
         color: white;
-      }
-      
-    i{
-    color: #f2f2f2;
-    background-color: rgb(41, 178, 188);
-    border-radius: 33px 33px 33px 33px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 18px;
-    padding-right: 18px;
-    font-size:2.5em;
-    box-shadow:  0px 0px 15px rgb(0 0 0 / 60%);
+    }
 
-    &:hover{
-        font-size:2.6em;
-        padding-top: 16px;
-        padding-bottom: 16px;
-        padding-left: 19px;
-        padding-right: 19px;
+    i {
+        color: #f2f2f2;
+        background-color: rgb(41, 178, 188);
+        border-radius: 33px 33px 33px 33px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 18px;
+        padding-right: 18px;
+        font-size: 2.5em;
+        box-shadow: 0 0 15px rgb(0 0 0 / 60%);
+
+        &:hover {
+            font-size: 2.6em;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 19px;
+            padding-right: 19px;
+        }
     }
 }
 
-
-}
-
- /* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
- #remonter {
+/* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
+#remonter {
     display: none;
     position: fixed;
-    width:37px;
+    width: 37px;
     height: 37px;
     background-color: $color3;
     border-radius: 25px;
     bottom: 10px;
-    right:12px;
+    right: 12px;
     text-align: center;
     line-height: 42px;
     z-index: 2;
 
-
-    i{
-    color:white;
-    font-size:20px;
+    i {
+        color: white;
+        font-size: 20px;
     }
 
-    .remonter:hover{
+    .remonter:hover {
         background-color: $color2;
     }
 }
-
 
 // premiere section
 .premiere {
@@ -118,53 +108,53 @@ footer{
     margin: 20vh auto 0 auto;
     margin-bottom: 60px;
 
-    h1{
-        font-family:$font;
-        font-weight:bold;
+    h1 {
+        font-family: $font;
+        font-weight: bold;
         margin-bottom: 40px;
-        font-size:3em;
+        font-size: 3em;
     }
 
-    .team{
+    .team {
         font-size: 2.2em;
         letter-spacing: 1.5px;
         margin-bottom: 20px;
         border-bottom: 1px solid $color2;
         font-family: $font3;
-        color:$color3;
+        color: $color3;
     }
 
-    .result{
+    .result {
         display: block;
         margin-left: auto;
         margin-right: auto;
         width: 150px;
         margin-top: 50px;
-        color:rgb(245, 245, 245);
-        font-family:$font ;
-        font-weight:bold ;
+        color: rgb(245, 245, 245);
+        font-family: $font ;
+        font-weight: bold;
         letter-spacing: 0.3mm;
         background-color: black;
         padding: 15px;
         border-radius: 6px;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
             background-color: rgb(59, 59, 59);
         }
     }
 
-    #button-filter{
+    #button-filter {
         position: absolute;
         right: 0;
         background-color: transparent;
-        border:3px solid rgb(231, 231, 231);
+        border: 3px solid rgb(231, 231, 231);
         border-radius: 100%;
         padding: 7px;
         cursor: pointer;
     }
 
-    .filter{
+    .filter {
         display: none;
         margin-top: 70px;
 
@@ -174,32 +164,32 @@ footer{
             flex-direction: row;
             justify-content: center;
         }
-        
+
         .container {
-            overflow: hidden;
             overflow: hidden;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-          }
-          
-          .filterDiv {
+        }
+
+        .filterDiv {
             font-size: 0.8em;
             font-family: "Poppins";
             text-align: center;
             margin: 2px;
             margin-top: 20px;
-            display: none; /* Hidden by default */
-          }
-          
-          /* The "show" class is added to the filtered elements */
-          .show {
+            display: none;
+            /* Hidden by default */
+        }
+
+        /* The "show" class is added to the filtered elements */
+        .show {
             display: block;
             margin-right: 18px;
-          }
-          
-          /* Style the buttons */
-          .btn {
+        }
+
+        /* Style the buttons */
+        .btn {
             border: none;
             outline: none;
             font-size: 1em;
@@ -207,37 +197,33 @@ footer{
             padding: 12px 16px;
             background-color: #f1f1f1;
             cursor: pointer;
-          }
-          
-          /* Add a light grey background on mouse-over */
-          .btn:hover {
+        }
+
+        /* Add a light grey background on mouse-over */
+        .btn:hover {
             background-color: #ddd;
-          }
-          
-          /* Add a dark background to the active button */
-          .btn.active {
-            
-          }
+        }
     }
 
     #carte {
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    width: 300px;
-    display:inline-block ;
-    margin: 10vh 0 0 10vh;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 300px;
+        display: inline-block;
+        margin: 10vh 0 0 10vh;
 
         img {
             height: 240px;
             margin-bottom: 10px;
         }
 
-        h2{
+        h2 {
             font-size: 1.5em;
             letter-spacing: 2px;
         }
-        h3{
+
+        h3 {
             font-size: 1.2em;
             font-family: sans-serif;
             margin-bottom: 35px;
@@ -252,36 +238,36 @@ footer{
             width: 150px;
             transition: all 0.5s;
             cursor: pointer;
-             color: black;
-             font-family: $font2;
-          }
+            color: black;
+            font-family: $font2;
+        }
 
-          .button span {
+        .button span {
             cursor: pointer;
             display: inline-block;
             position: relative;
             transition: 0.5s;
-          }
+        }
 
-          .button span:after {
-            content: '\00bb';
+        .button span:after {
+            content: "\00bb";
             position: absolute;
             opacity: 0;
             top: 0;
             right: -20px;
             transition: 0.5s;
-          }
+        }
 
-          .button:hover span {
+        .button:hover span {
             padding-right: 25px;
-          }
+        }
 
-          .button:hover span:after {
+        .button:hover span:after {
             opacity: 1;
             right: 0;
-          }
+        }
 
-        .media{
+        .media {
             display: inline-block;
             margin-top: 35px;
             margin-left: 10px;
@@ -291,11 +277,10 @@ footer{
             left: -100px;
             transition: 0.2s;
 
-            &:hover{
+            &:hover {
                 color: #232323e3;
             }
         }
-
     }
 }
 
@@ -304,121 +289,116 @@ footer{
     position: fixed;
     top: 40vh;
     z-index: 2;
-    .btn{
+
+    .btn {
         display: block;
-        font-size: 2.3em ;
+        font-size: 2.3em;
         margin-bottom: 30px;
         margin-left: 30px;
         transition: 0.3s;
         color: #000000;
     }
-    .btn:hover{
+
+    .btn:hover {
         color: #888787d0;
     }
 }
 
-
 /* media queries  */
-@media (max-width:1000px){
-
-    .premiere{
-
-        h1{ 
+@media (max-width:1000px) {
+    .premiere {
+        h1 {
             font-size: 2.2em;
         }
-        .team{
+
+        .team {
             font-size: 2em;
             letter-spacing: 1.5px;
             margin-bottom: 20px;
             border-bottom: 1px solid $color2;
             font-family: $font3;
-            color:$color3;
-        }
-    
-    
-    #carte {
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        width: 280px;
-        display:inline-block ;
-        margin: 10vh 0 0 5vh;
-
-        img {
-            height: 220px;
-            margin-bottom: 10px;
+            color: $color3;
         }
 
-        h2{
-            font-size: 1.5em;
-        }
-        h3{
-            font-size: 1.2em;
-            margin-bottom: 35px;
-        }
-
-        .media{
+        #carte {
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 280px;
             display: inline-block;
-            margin-top: 35px;
-            margin-left: 10px;
-            font-size: 1.7em;
-            color: #000000;
-            position: relative;
-            left: -100px;
-            transition: 0.2s;
+            margin: 10vh 0 0 5vh;
+
+            img {
+                height: 220px;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+                margin-bottom: 35px;
+            }
+
+            .media {
+                display: inline-block;
+                margin-top: 35px;
+                margin-left: 10px;
+                font-size: 1.7em;
+                color: #000000;
+                position: relative;
+                left: -100px;
+                transition: 0.2s;
+            }
+
+            .media:hover {
+                color: #696969e3;
+            }
         }
 
-        .media:hover{
-            color: #696969e3;
+        .troisieme {
+            display: none;
         }
     }
-
-
-    .troisieme {
-        display: none;
-    }
-
-} 
 }
 
-
-@media (max-width:610px){
-
+@media (max-width:610px) {
     #messagerie {
         position: fixed;
-        width:37px;
+        width: 37px;
         height: 37px;
         top: 90vh;
-        left:20px;
+        left: 20px;
         z-index: 2;
         background-color: transparent;
         border: none;
         cursor: pointer;
-          
-        i{
-        color: #f2f2f2;
-        background-color: rgb(41, 178, 188);
-        border-radius: 33px 33px 33px 33px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 13px;
-        padding-right: 13px;
-        font-size:2.3em;
-        box-shadow:  0px 0px 15px rgb(0 0 0 / 60%);
-    
-        &:hover{
-            font-size:2.5em;
-            padding-top: 11px;
-            padding-bottom: 11px;
-            padding-left: 14px;
-            padding-right: 14px;
+
+        i {
+            color: #f2f2f2;
+            background-color: rgb(41, 178, 188);
+            border-radius: 33px 33px 33px 33px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 13px;
+            padding-right: 13px;
+            font-size: 2.3em;
+            box-shadow: 0 0 15px rgb(0 0 0 / 60%);
+
+            &:hover {
+                font-size: 2.5em;
+                padding-top: 11px;
+                padding-bottom: 11px;
+                padding-left: 14px;
+                padding-right: 14px;
+            }
         }
-    }
-    
+
     }
 
     .troisieme {
         display: none;
     }
-
 }

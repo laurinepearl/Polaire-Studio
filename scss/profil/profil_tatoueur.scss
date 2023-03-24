@@ -1,21 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap");
 @import "../variable";
 @import "../templates";
 
 html {
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
-.header
-{
-    @extend %header;
+.header {
+	@extend %header;
 }
 
-.snackbar{
-    @extend %snackbar;
-
+.snackbar {
+	@extend %snackbar;
 }
 
 .container {
@@ -23,20 +21,18 @@ html {
 	display: grid;
 	grid-template-columns: 300px 1fr;
 	grid-template-rows: 0.25fr 1fr 1fr 1fr 1fr;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
+	grid-column-gap: 0;
+	grid-row-gap: 0;
 	margin-left: 30px;
 
-
-	.identite{
+	.identite {
 		font-size: 1.5em;
 		margin-top: 5em;
 		font-family: $font2;
 		grid-area: 1 / 1 / 2 / 3;
 	}
 
-	.container-onglets
-	{
+	.container-onglets {
 		grid-area: 2/1/6/2;
 		display: flex;
 		gap: 3rem;
@@ -61,47 +57,44 @@ html {
 				border-radius: 50%;
 				background: red;
 				color: white;
-			  }
+			}
 
 			/* Anim */
 			&.active {
-
 				font-weight: 500;
 				color: rgb(0, 0, 0);
 				transition: all 0.3s ease;
 			}
 
-
-
-			i{
+			i {
 				display: inline-block;
 				color: black;
 				border-radius: 25px;
 				padding: 10px;
 			}
 
-			.fa-calendar-days{
+			.fa-calendar-days {
 				background-color: #cbabfe;
 			}
 
-			.fa-comment{
+			.fa-comment {
 				background-color: rgb(255, 172, 127);
 				border-radius: 25px;
 				padding: 10px;
 			}
 
-			.fa-user-pen{
+			.fa-user-pen {
 				background-color: #87b4f1;
 			}
 		}
 
-		.suppression{
+		.suppression {
 			width: 500px;
 			font-size: 1.2em;
 			font-weight: 500;
 			cursor: pointer;
 
-			i{
+			i {
 
 				background-color: rgb(255, 88, 88);
 				display: inline-block;
@@ -110,10 +103,9 @@ html {
 				padding: 10px;
 			}
 
-
-			input{
+			input {
 				background-color: transparent;
-				border:transparent;
+				border: transparent;
 				color: black;
 				font-family: sans-serif;
 				font-weight: 500;
@@ -121,26 +113,24 @@ html {
 				letter-spacing: 2px;
 				text-decoration: none;
 			}
-
 		}
 
-		.deconnexion{
+		.deconnexion {
 			width: 500px;
 			margin-top: 8rem;
 			font-size: 1.2em;
 			font-weight: 500;
 			cursor: pointer;
 
-			i{
-
+			i {
 				background-color: rgb(140, 237, 190);
 				border-radius: 25px;
 				padding: 10px;
 			}
 
-			input{
+			input {
 				background-color: transparent;
-				border:transparent;
+				border: transparent;
 				color: black;
 				font-family: sans-serif;
 				font-weight: 500;
@@ -151,7 +141,7 @@ html {
 		}
 	}
 
-	.container-body{
+	.container-body {
 		grid-area: 2 / 2 / 6 / 3;
 		display: flex;
 		justify-content: center;
@@ -159,25 +149,24 @@ html {
 
 		.illus {
 			position: relative;
-    		bottom: 80px;
+			bottom: 80px;
 
-				img {
-					height: 380px;
-					width: 530px;
-				}
+			img {
+				height: 380px;
+				width: 530px;
+			}
 
-				p{
-					font-size: 1.3em;
-					font-family: sans-serif;
-					letter-spacing: 2px;
-					font-weight: 500;
-					color: #38547b;
-					top: 90px;
-					position: absolute;
-					top: 13px;
-					left: 120px;
-				}
-				}
+			p {
+				font-size: 1.3em;
+				font-family: sans-serif;
+				letter-spacing: 2px;
+				font-weight: 500;
+				color: #38547b;
+				position: absolute;
+				top: 13px;
+				left: 120px;
+			}
+		}
 
 		.contenu {
 			display: none;
@@ -186,159 +175,146 @@ html {
 			align-self: flex-start;
 			opacity: 0;
 
-			>div{
-
+			>div {
 				flex-wrap: wrap;
-    			justify-content: center;
+				justify-content: center;
 				gap: 58px;
 				overflow-y: auto;
 				height: 450px;
 
-			.sixieme{
-				margin-bottom: 50px;
+				.sixieme {
+					margin-bottom: 50px;
 
-				article{
-					// position: relative;
-					display: flex;
-					flex-direction: column;
-					flex-wrap: nowrap;
-					width: 400px;
-					height: 450px;
-					border-radius: 12px;
-					background-color: rgb(233, 233, 233);
-
-					> div:nth-child(1)
-					{
-						border-bottom: 1px solid rgb(186, 186, 186);
-
-
-						.fleche{
-							background-color: transparent;
-							border: none;
-							position: relative;
-							top:28px;
-							left: 20px;
-
-							.fa-arrow-left{
-								font-size: 1.8em;
-								cursor: pointer;
-
-							}
-						 }
-
-							h3{
-							   font-size: 1.8em;
-							   font-family: $font2;
-							   text-align: center;
-							   margin-bottom: 15px;
-							}
-
-					}
-
-					> div:nth-child(2) {
-						overflow-y: auto;
+					article {
 						display: flex;
 						flex-direction: column;
-						align-items: flex-end;
+						flex-wrap: nowrap;
+						width: 400px;
+						height: 450px;
+						border-radius: 12px;
+						background-color: rgb(233, 233, 233);
 
-						.desti1{
-							float: left;
-							margin-left: 20px;
-							h4{
-								font-size: 1.2em;
-								font-family: $font2;
-								margin-bottom: 5px;
+						>div:nth-child(1) {
+							border-bottom: 1px solid rgb(186, 186, 186);
 
-							}
-							p{
-								min-width: 200px;
-								max-width: 200px;
-								min-height: 30px;
-								border-top-right-radius: 6px;
-								border-bottom-right-radius: 6px;
-								border-bottom-left-radius: 6px;
-								background-color: white;
-								font-family: $font2;
-								font-size: 1.1em;
-								padding: 5px;
+							.fleche {
+								background-color: transparent;
+								border: none;
+								position: relative;
+								top: 28px;
+								left: 20px;
 
+								.fa-arrow-left {
+									font-size: 1.8em;
+									cursor: pointer;
+								}
 							}
 
+							h3 {
+								font-size: 1.8em;
+								font-family: $font2;
+								text-align: center;
+								margin-bottom: 15px;
+							}
 						}
-						.desti2{
 
-							position: relative;
-							float: right;
-							margin-right: 20px;
+						>div:nth-child(2) {
+							overflow-y: auto;
+							display: flex;
+							flex-direction: column;
+							align-items: flex-end;
 
-							h4{
-								font-size: 1.2em;
-								font-family: $font2;
-								margin-bottom: 5px;
-								text-align: right;
+							.desti1 {
+								float: left;
+								margin-left: 20px;
 
+								h4 {
+									font-size: 1.2em;
+									font-family: $font2;
+									margin-bottom: 5px;
+								}
+
+								p {
+									min-width: 200px;
+									max-width: 200px;
+									min-height: 30px;
+									border-top-right-radius: 6px;
+									border-bottom-right-radius: 6px;
+									border-bottom-left-radius: 6px;
+									background-color: white;
+									font-family: $font2;
+									font-size: 1.1em;
+									padding: 5px;
+								}
 							}
-							p{
-								min-width: 200px;
-								max-width: 200px;
+
+							.desti2 {
+								position: relative;
+								float: right;
+								margin-right: 20px;
+
+								h4 {
+									font-size: 1.2em;
+									font-family: $font2;
+									margin-bottom: 5px;
+									text-align: right;
+								}
+
+								p {
+									min-width: 200px;
+									max-width: 200px;
+									min-height: 30px;
+									border-top-left-radius: 6px;
+									border-bottom-right-radius: 6px;
+									border-bottom-left-radius: 6px;
+									background-color: $color;
+									color: white;
+									font-family: $font2;
+									font-size: 1.1em;
+									padding: 5px;
+								}
+							}
+						}
+
+						.envoie {
+							display: flex;
+							margin-top: auto;
+							width: 100%;
+
+							label {
+								&:hover {
+									background-color: rgb(216, 216, 216);
+									cursor: pointer;
+								}
+							}
+
+							textarea {
+								resize: none;
+								width: 100%;
 								min-height: 30px;
-								border-top-left-radius: 6px;
-								border-bottom-right-radius: 6px;
 								border-bottom-left-radius: 6px;
+								font-family: $font2;
+								font-size: 1.2em;
+							}
+
+							button {
+								display: inline;
+								width: 50px;
 								background-color: $color;
 								color: white;
-								font-family: $font2;
-								font-size: 1.1em;
-								padding: 5px;
-							}
-
-						}
-
-					}
-
-					.envoie {
-						display: flex;
-						margin-top: auto;
-						width:100%;
-
-						label {
-							&:hover{
-								background-color: rgb(216, 216, 216);
+								font-size: 1.3em;
+								border: none;
+								border-bottom-right-radius: 6px;
 								cursor: pointer;
 							}
 						}
-
-						textarea {
-							resize: none;
-							width:100%;
-							min-height: 30px;
-							border-bottom-left-radius: 6px;
-							font-family: $font2;
-							font-size: 1.2em;
-						}
-						button {
-							display: inline;
-							width: 50px;
-							background-color: $color;
-							color: white;
-							font-size: 1.3em;
-							border: none;
-							border-bottom-right-radius: 6px;
-							cursor: pointer;
-
-						}
 					}
-
 				}
-
-				}
-
 			}
-
 		}
 
 		.active-contenu {
-			display:flex;
+			display: flex;
 			animation: fade 0.5s forwards;
 		}
 
@@ -346,6 +322,7 @@ html {
 			from {
 				opacity: 0;
 			}
+
 			to {
 				opacity: 1;
 			}
@@ -353,51 +330,46 @@ html {
 
 		h3 {
 			font-size: 2em;
-			font-family:$font3;
+			font-family: $font3;
 			font-weight: 500;
 			padding: 20px;
 		}
-
-
 
 		p {
 			padding: 20px 20px 20px 0;
 		}
 
-		.rdv{
+		.rdv {
 			grid-area: 2 / 1 / 3 / 2;
 
-			.recap{
+			.recap {
 				height: 140px;
 
-
-				h4{
+				h4 {
 					font-family: "Yantramanav";
-    				font-size: 1.8em;
+					font-size: 1.8em;
 					margin-left: -55px;
 				}
 
-				.recap_entier{
-					background-color:#dde1e8;
+				.recap_entier {
+					background-color: #dde1e8;
 					padding: 17px;
 					margin-top: 25px;
 					margin-bottom: 30px;
 					border-radius: 15px;
 
-					h4{
+					h4 {
 						font-size: 1.3em;
 						font-weight: bold;
 						margin-left: 0;
-
 					}
 
 					p {
 						margin-bottom: 25px;
 						padding: 0 0 0 0;
-
 					}
 
-					.client{
+					.client {
 						margin-top: 10px;
 						display: flex;
 						justify-content: space-evenly;
@@ -408,106 +380,103 @@ html {
 							padding-right: 58px;
 							font-family: "Yantramanav";
 							font-weight: normal;
-
 						}
 
-						p{
-							margin-bottom: 0px;
+						p {
+							margin-bottom: 0;
 							padding: 0 0 0 0;
-
 						}
 					}
 				}
 			}
 
-			.horaire{
+			.horaire {
 				height: 400px;
 				margin-bottom: 65px;
 				border-bottom: 1px solid;
 
-				h4{
+				h4 {
 					font-family: "Yantramanav";
-					font-size:1.8em;
+					font-size: 1.8em;
 				}
 
-				form{
+				form {
 					width: 70vh;
 					margin-top: 20px;
 
-					input[type = checkbox] {
+					input[type=checkbox] {
 						background-color: #60b1cc;
 						font-size: 1.4em;
 						color: #fcfcfc;
 						font-weight: bold;
-						border:none;
-						border-radius:10px;
+						border: none;
+						border-radius: 10px;
 						padding: 18px;
 						margin-bottom: 15px;
 						margin-right: 10px;
-						cursor:pointer;
+						cursor: pointer;
 
-						&:hover{
+						&:hover {
 							background-color: #5399b0;
-
 						}
 					}
 				}
-				#valider{
+
+				#valider {
 					font-size: 1.4em;
 					background-color: black;
 					color: white;
 					padding: 7px;
 					margin-left: 103px;
 					margin-top: 26px;
-					cursor:pointer;
+					cursor: pointer;
 					display: block;
 
 					&:hover {
 						background-color: rgb(53, 53, 53);
 					}
-
 				}
-
 			}
 
-			.liste{
+			.liste {
 				font-family: $font2;
 			}
 
-			p{
+			p {
 				font-family: $font2;
 				margin-bottom: 40px;
 
-			span{
-				display: inline-block;
-			}
-			.entreprise{
-				background-color: $color;
-				font-size: 1.5em;
-				padding: 12px;
-				border-top-left-radius: 12px;
-				border-top-right-radius: 12px;
-				color: white;
+				span {
+					display: inline-block;
+				}
+
+				.entreprise {
+					background-color: $color;
+					font-size: 1.5em;
+					padding: 12px;
+					border-top-left-radius: 12px;
+					border-top-right-radius: 12px;
+					color: white;
+				}
+
+				.client {
+					width: 100%;
+					box-sizing: border-box;
+					background-color: rgb(242, 242, 242);
+					font-size: 1.2em;
+					padding: 12px;
+					padding-right: 23px;
+					padding-bottom: 30px;
+					border-bottom-left-radius: 12px;
+					border-bottom-right-radius: 12px;
+					color: rgb(0, 0, 0);
+				}
 			}
 
-			.client{
-				width: 100%;
-				box-sizing: border-box;
-				background-color: rgb(242, 242, 242);
-				font-size: 1.2em;
-				padding: 12px;
-				padding-right: 23px;
-				padding-bottom: 30px;
-				border-bottom-left-radius: 12px;
-				border-bottom-right-radius: 12px;
-				color: rgb(0, 0, 0);
-			}
-			}
-
-			#autize_button{
+			#autize_button {
 				background-color: #7EC89C;
 				font-size: 1.2em;
-    			color: #ffffff;
+				color: #ffffff;
 				padding: 9px 18px 9px 18px;
 				border: none;
 				border-radius: 7px;
@@ -527,12 +496,11 @@ html {
 		.prl {
 			grid-area: 4 / 1 / 5 / 2;
 
-			form
-			{
+			form {
 				display: grid;
 
-				input[type=file]{
-					margin-bottom:20px;
+				input[type=file] {
+					margin-bottom: 20px;
 					display: block;
 				}
 
@@ -541,13 +509,11 @@ html {
 						label {
 							font-family: $font2;
 							font-size: 1.2em;
-
 						}
 					}
-
 				}
 
-				p{
+				p {
 					display: inline-block;
 					font-size: 1.4em;
 					font-weight: bold;
@@ -556,41 +522,52 @@ html {
 					border-top: 2px rgb(164, 164, 164) solid;
 				}
 
-				ul
-				{
-					#Poppins + label {font-family:'Poppins';}
-					#Nothing + label {font-family:'Nothing You Could Do';}
-					#Bebas + label {font-family:'Bebas Neue';}
-					#Shadows + label {font-family:'Shadows Into Light';}
+				ul {
+					#Poppins+label {
+						font-family: "Poppins";
+					}
+
+					#Nothing+label {
+						font-family: "Nothing You Could Do";
+					}
+
+					#Bebas+label {
+						font-family: "Bebas Neue";
+					}
+
+					#Shadows+label {
+						font-family: "Shadows Into Light";
+					}
 				}
 
-				.reseaux{
-					div{
-						display:block;
+				.reseaux {
+					div {
+						display: block;
 
-						i{
+						i {
 							display: inline;
 						}
 
-						input{
+						input {
 							margin-bottom: 20px;
 						}
 					}
 				}
 
-				.publier{
+				.publier {
 					display: flex;
 					justify-content: center;
-					button{
+
+					button {
 						font-size: 1.4em;
-						border-radius:25px;
+						border-radius: 25px;
 						margin-top: 20px;
 						border: none;
-						padding:15px;
+						padding: 15px;
 						cursor: pointer;
 						transition: 300ms;
 
-						&:hover{
+						&:hover {
 							background-color: rgb(194, 194, 194);
 						}
 					}
@@ -601,11 +578,13 @@ html {
 	}
 }
 
-
-
 /* media queries tablet */
-@media (max-width:1000px){
-	.identite, .onglets > span, input[name="deconnexion"], input[name="suppression"] {
+@media (max-width:1000px) {
+
+	.identite,
+	.onglets>span,
+	input[name="deconnexion"],
+	input[name="suppression"] {
 		display: none;
 	}
 
@@ -625,22 +604,20 @@ html {
 			.onglets {
 				z-index: 3;
 
-
 				.badge {
 					right: 0;
-				  }
+				}
 			}
 
-			.suppression{
+			.suppression {
 				width: 100%;
 				font-size: 1.2em;
 				font-weight: 500;
 				cursor: pointer;
 
-
-				input{
+				input {
 					background-color: transparent;
-					border:transparent;
+					border: transparent;
 					color: black;
 					font-family: sans-serif;
 					font-weight: 500;
@@ -648,7 +625,6 @@ html {
 					letter-spacing: 2px;
 					text-decoration: none;
 				}
-
 			}
 
 			.deconnexion {
@@ -666,26 +642,27 @@ html {
 				position: relative;
 				bottom: 80px;
 
-					img {
-						height: 390px;
-						width: 580px;
-					}
+				img {
+					height: 390px;
+					width: 580px;
+				}
 
-					p{
-						font-size: 1.3em;
-						left: 140px;
-					}
+				p {
+					font-size: 1.3em;
+					left: 140px;
+				}
 			}
 
 		}
 	}
 }
 
-
 /* media queries mobile */
-@media (max-width: 610px)
-{
-	.identite, .onglets > span, input[name="deconnexion"] {
+@media (max-width: 610px) {
+
+	.identite,
+	.onglets>span,
+	input[name="deconnexion"] {
 		display: none;
 	}
 
@@ -707,7 +684,7 @@ html {
 
 				.badge {
 					right: 0;
-				  }
+				}
 			}
 
 			.deconnexion {
@@ -725,52 +702,48 @@ html {
 				position: relative;
 				bottom: 80px;
 
-					img {
-						height: 250px;
-						width: 410px;
-					}
+				img {
+					height: 250px;
+					width: 410px;
+				}
 
-					p{
-						font-size: 1em;
-						left: 80px;
-					}
+				p {
+					font-size: 1em;
+					left: 80px;
+				}
 			}
 
-
-			.rdv{
+			.rdv {
 				grid-area: 2 / 1 / 3 / 2;
 
-				.recap{
+				.recap {
 					height: 140px;
 
-
-					h4{
+					h4 {
 						font-family: "Yantramanav";
 						font-size: 1.8em;
 						margin-left: -55px;
 					}
 
-					.recap_entier{
-						background-color:#dde1e8;
+					.recap_entier {
+						background-color: #dde1e8;
 						padding: 14px;
 						margin-top: 25px;
 						margin-bottom: 30px;
 						border-radius: 15px;
 
-						h4{
+						h4 {
 							font-size: 1.3em;
 							font-weight: bold;
 							margin-left: 0;
-
 						}
 
 						p {
 							margin-bottom: 25px;
 							padding: 0 0 0 0;
-
 						}
 
-						.client{
+						.client {
 							margin-top: 10px;
 							display: flex;
 							justify-content: space-evenly;
@@ -779,26 +752,25 @@ html {
 							h4 {
 								border-right: 1px solid;
 								padding-right: 58px;
-
 							}
 
-							p{
-								margin-bottom: 0px;
+							p {
+								margin-bottom: 0;
 								padding: 0 0 0 0;
-
 							}
 						}
 					}
 				}
 
-				.horaire{
+				.horaire {
 					height: 400px;
-					h4{
+
+					h4 {
 						font-family: "Yantramanav";
-						font-size:1.8em;
+						font-size: 1.8em;
 					}
 
-					form{
+					form {
 						width: 70vh;
 						margin-top: 20px;
 
@@ -807,24 +779,20 @@ html {
 							font-size: 1.1em;
 							color: #fcfcfc;
 							font-weight: bold;
-							border:none;
-							border-radius:10px;
+							border: none;
+							border-radius: 10px;
 							padding: 10px;
 							margin-bottom: 15px;
 							margin-right: 10px;
-							cursor:pointer;
+							cursor: pointer;
 
-							&:hover{
+							&:hover {
 								background-color: #5399b0;
-
 							}
 						}
 					}
-
 				}
 			}
 		}
 	}
-
-
 }

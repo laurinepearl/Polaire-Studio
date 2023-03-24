@@ -1,34 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap");
 @import "../variable";
 @import "../templates";
 
-:root{
-	--main-color:#000000;
-	--black:#000000;
-	--bg:#ffffff;
-	--border:.1rem solid rgba(255,255,255,.3);
+:root {
+	--main-color: #000000;
+	--black: #000000;
+	--bg: #ffffff;
+	--border: .1rem solid rgba(255, 255, 255, .3);
 }
 
-
 /* BOUTON POUR REVENIR EN HAUT DE LA PAGE */
-html{
+html {
 	overflow: hidden;
 	scroll-behavior: smooth;
 }
 
-// body{
-//     background: var(--bg);
-// }
-
-.header
-{
+.header {
 	@extend %header;
 }
 
-#co
-{
+#co {
 	@extend %formulaire;
 }
 
@@ -36,133 +29,123 @@ html{
 	@extend %messagerie;
 }
 
-.snackbar{
+.snackbar {
 	@extend %snackbar;
 
 }
 
 // Pied de page général.
-footer{
+footer {
 	@extend %footer;
 }
 
-
 #messagerie {
 	position: fixed;
-	width:37px;
+	width: 37px;
 	height: 37px;
 	top: 70vh;
-	right:50px;
+	right: 50px;
 	z-index: 2;
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 
 	.badge {
-        display: none;
-        font-size: 10px;
-        position: absolute;
-        top: -18px;
-        right: -10px;
-        padding: 5px 5px;
-        border-radius: 50%;
-        background: red;
-        color: white;
-      }
-	  
-	i{
-	color: #f2f2f2;
-	background-color: rgb(41, 178, 188);
-	border-radius: 33px 33px 33px 33px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 18px;
-	padding-right: 18px;
-	font-size:2.5em;
-	box-shadow:  0px 0px 15px rgb(0 0 0 / 60%);
+		display: none;
+		font-size: 10px;
+		position: absolute;
+		top: -18px;
+		right: -10px;
+		padding: 5px 5px;
+		border-radius: 50%;
+		background: red;
+		color: white;
+	}
 
-	&:hover{
-		font-size:2.6em;
-		padding-top: 16px;
-		padding-bottom: 16px;
-		padding-left: 19px;
-		padding-right: 19px;
+	i {
+		color: #f2f2f2;
+		background-color: rgb(41, 178, 188);
+		border-radius: 33px 33px 33px 33px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: 18px;
+		padding-right: 18px;
+		font-size: 2.5em;
+		box-shadow: 0 0 15px rgb(0 0 0 / 60%);
+
+		&:hover {
+			font-size: 2.6em;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-left: 19px;
+			padding-right: 19px;
+		}
 	}
 }
 
-
-}
-
-
- /* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
- #remonter {
+/* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
+#remonter {
 	display: none;
 	position: fixed;
-	width:37px;
+	width: 37px;
 	height: 37px;
 	background-color: $color3;
 	border-radius: 25px;
 	bottom: 10px;
-	right:12px;
+	right: 12px;
 	text-align: center;
 	line-height: 42px;
 	z-index: 2;
 
-
-	i{
-	color:white;
-	font-size:20px;
+	i {
+		color: white;
+		font-size: 20px;
 	}
 
-	.remonter:hover{
+	.remonter:hover {
 		background-color: $color2;
 	}
 }
 
-.premiere{
+.premiere {
 	position: relative;
 	min-width: 970px;
 	max-width: 50vw;
 	margin: 20vh auto 0 auto;
 
-
-	h2{
+	h2 {
 		font-size: 3em;
 		letter-spacing: 2px;
 		font-family: $font;
 		color: $color3;
 		font-weight: 600;
-
 	}
 
-	h3{
-		font-size:3.2em;
+	h3 {
+		font-size: 3.2em;
 		letter-spacing: 2px;
-		width: 380px;
 		font-family: $font2;
 		font-weight: 500;
-		width:600px;
-		margin-left: 50px ;
-
+		width: 600px;
+		margin-left: 50px;
 	}
 
-	img:nth-of-type(1){
-        height: 340px;
-		margin-bottom: 0px;
-    }
+	img:nth-of-type(1) {
+		height: 340px;
+		margin-bottom: 0;
+	}
 
-    img:nth-of-type(2){
-        height: 340px;
-        margin-left: 70px;
+	img:nth-of-type(2) {
+		height: 340px;
+		margin-left: 70px;
 		margin-bottom: 35px;
-    }
+	}
 
-    img:nth-of-type(3){
-        height: 340px;
-        margin-left: 70px;
+	img:nth-of-type(3) {
+		height: 340px;
+		margin-left: 70px;
 		margin-bottom: 70px;
-
-    }
+	}
 }
 
 // Début des bulles
@@ -171,7 +154,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 @function random_range($min, $max) {
 	$rand: random();
-	$random_range: $min + floor($rand * (($max - $min) + 1));
+	$random_range: $min +floor($rand * (($max - $min) + 1));
 	@return $random_range;
 }
 
@@ -183,8 +166,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 	width: 100%;
 	overflow: hidden;
 
-	img
-	{
+	img {
 		z-index: -1;
 		opacity: 0.30;
 		position: absolute;
@@ -198,7 +180,7 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 		&::before {
 			position: absolute;
-			content: '';
+			content: "";
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -207,10 +189,8 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 			animation: var(--bubble-sway-type) var(--bubble-sway-duration) var(--bubble-sway-delay) ease-in-out alternate infinite;
 		}
 
-		@for $i from 0 through $bubble-count
-		{
-			&:nth-child(#{$i})
-			{
+		@for $i from 0 through $bubble-count {
+			&:nth-child(#{$i}) {
 				--bubble-left-offset: #{random_range(0vw, 90vw)};
 				--bubble-radius: #{random_range(5vw, 8vw)};
 				--bubble-float-duration: #{random_range(6s, 12s)};
@@ -248,15 +228,13 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 		transform: translateX(-100%);
 	}
 }
+
 // Fin des bulles
 
-
 /* media queries  tablet*/
-@media (max-width:1000px)
-{
-	.premiere{
+@media (max-width:1000px) {
+	.premiere {
 		min-width: 600px;
-
 
 		h2 {
 			font-size: 2.2em;
@@ -265,13 +243,13 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 			font-weight: 600;
 			width: 350px;
 			margin-bottom: 20px;
-			margin-left: 200px ;
+			margin-left: 200px;
 			color: $color3;
 			position: absolute;
 		}
 
-		h3{
-			font-size:2.4em;
+		h3 {
+			font-size: 2.4em;
 			letter-spacing: 2px;
 			width: 380px;
 			font-family: $font2;
@@ -279,17 +257,18 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 			margin-left: 220px;
 			margin-top: 50px;
 			position: absolute;
-
 		}
-		img:nth-of-type(1){
+
+		img:nth-of-type(1) {
 			display: none;
 		}
-		img:nth-of-type(2){
+
+		img:nth-of-type(2) {
 			margin: -70px 0 0 -20px;
 		}
-		img:nth-of-type(3){
-			display: none;
 
+		img:nth-of-type(3) {
+			display: none;
 		}
 	}
 
@@ -298,30 +277,30 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 		min-width: 300px;
 		max-width: 80vw;
 
-		.shop{
+		.shop {
 			height: 500px;
 			position: relative;
 
-			p{
+			p {
 				min-width: 0;
 				margin-bottom: 40px;
 			}
 
-			img{
+			img {
 				height: auto;
 			}
-		 }
+		}
 
-		.image{
+		.image {
 			height: 500px;
 			position: relative;
 
-			p{
+			p {
 				min-width: 0;
 				margin-bottom: 40px;
 			}
 
-			img{
+			img {
 				height: auto;
 			}
 		}
@@ -331,15 +310,13 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 			margin-left: 0;
 		}
 
-		p:nth-of-type(2){
+		p:nth-of-type(2) {
 			margin-top: -5px;
 			max-width: 500px;
 			margin-left: 310px;
-
 		}
 
-		a
-		{
+		a {
 			position: absolute;
 			bottom: auto;
 			left: 350px; // Longueur de l'image.
@@ -347,25 +324,19 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 
 	}
 
-	.troisieme
-	{
+	.troisieme {
 		display: none;
 	}
-
 }
 
-
 /* media queries  mobile*/
-@media (max-width:670px)
-{
-	.premiere{
+@media (max-width:670px) {
+	.premiere {
 		min-width: auto;
 		text-align: center;
 		display: flex;
 		justify-content: center;
 		align-items: flex-start;
-
-
 
 		h2 {
 			font-size: 1.6em;
@@ -376,35 +347,29 @@ $sway-type: "sway-left-to-right", "sway-right-to-left";
 			margin-bottom: 20px;
 			margin-left: 0;
 			color: $color3;
-
 		}
 
-		h3{
-			font-size:1.8em;
+		h3 {
+			font-size: 1.8em;
 			letter-spacing: 2px;
 			width: 280px;
 			font-family: $font2;
 			font-weight: 500;
 			margin-left: 0;
 			margin-top: 50px;
-
 		}
 
-		img:nth-of-type(1){
+		img:nth-of-type(1) {
 			display: none;
 		}
 
-		img:nth-of-type(2)
-		{
+		img:nth-of-type(2) {
 			height: 290px;
 			margin-top: 70px;
-
 		}
 
-		img:nth-of-type(3){
+		img:nth-of-type(3) {
 			display: none;
-
 		}
 	}
-
 }
