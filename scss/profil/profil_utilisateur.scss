@@ -8,6 +8,10 @@ html {
 	font-family: "Poppins", sans-serif;
 }
 
+#co {
+	@extend %formulaire;
+}
+
 .header {
 	@extend %header;
 }

@@ -66,6 +66,38 @@ forRegister.click( function ()
 	}
 } );
 
+// Pour demander vers quel formulaire ou page rediriger l'utilisateur.
+$( "#displayform" ).click( function ( event )
+{
+	const page = prompt( "Que voulez-vous faire ? Tapez '1' pour voir le formulaire, '2' pour le tableau de bord des utilisateurs et '3' pour le tableau de bord des tatoueurs.", "1" );
+
+	if ( page == 1 )
+	{
+		// Rien.
+	}
+	else if ( page == 2 )
+	{
+		event.preventDefault();
+		event.stopImmediatePropagation();
+
+		window.location.href = "profil_utilisateur.html";
+	}
+	else if ( page == 3 )
+	{
+		event.preventDefault();
+		event.stopImmediatePropagation();
+
+		window.location.href = "profil_tatoueur.html";
+	}
+	else
+	{
+		event.preventDefault();
+		event.stopImmediatePropagation();
+
+		alert( "Vous n'avez pas entré un chiffre valide." );
+	}
+} );
+
 // Pour afficher/disparaître l'effet d'overlay des formulaires précédents.
 function showForm( event )
 {

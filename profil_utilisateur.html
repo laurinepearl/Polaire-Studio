@@ -57,6 +57,100 @@
 			</div>
 		</header>
 
+		<section id="co">
+			<div class="formContainer">
+				<div class="form-wrapper">
+					<div class="card">
+						<button class="btn" id="hideform">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+
+						<div class="card-header">
+							<div id="forLogin" class="form-header">Se connecter</div>
+							<div id="forRegister" class="form-header">S'inscrire</div>
+						</div>
+
+						<div class="card-body" id="formContainer">
+							<form id="loginForm" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<input type="email" name="Email" class="champs" id="login_email" placeholder="email" autocomplete="off" />
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Mot de passe -->
+								<input type="password" name="password" class="champs" id="login_password" placeholder="mot de passe" autocomplete="off" />
+								<i class="fa-solid fa-eye-slash eye"></i>
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Oubli du mot de passe -->
+								<a href="#" id="mdpforget" class="link">Mot de passe oublié ?</a><br>
+
+								<button class="formButton">Connexion</button>
+							</form>
+
+							<form id="registerForm" class="toggleform" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<div class="form-control">
+									<input type="email" name="Email" class="champs" id="register_email" placeholder="email" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div class="form-control">
+									<input type="texte" name="prenom" class="champs" id="register_prenom" placeholder="prénom" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<!-- Mot de passe (première étape) -->
+								<div class="form-control">
+									<input type="password" name="password" class="champs" id="register_password" placeholder="mot de passe" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<!-- Mot de passe (confirmation) -->
+								<div class="form-control">
+									<input type="password" name="password2" class="champs"  id="register_confirmation" placeholder="Confirmer Mot de passe" autocomplete="off" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div>
+									<input type="checkbox" id="conditions" name="conditions" value="">
+									<label id="conditions1">J'ai lu et accepté les <a href="conditions_generales.html">conditions générales d'utilisation</a></label>
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<button class="formButton">Inscription</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<div class="container">
 			<div class="identite">
 				<h2>Bonjour</h2>
