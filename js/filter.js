@@ -1,125 +1,159 @@
-function myFunction() {
-    var x = document.querySelector(".filter");
-    if (x.style.display == "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
+function myFunction()
+{
+	var x = document.querySelector( ".filter" );
 
-
-
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
+	if ( x.style.display == "block" )
+	{
+		x.style.display = "none";
+	}
+	else
+	{
+		x.style.display = "block";
+	}
 }
 
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {
-      element.className += " " + arr2[i];
-    }
-  }
+filterSelection( "all" );
+function filterSelection( c )
+{
+	var x, i;
+	x = document.getElementsByClassName( "filterDiv" );
+	if ( c == "all" ) c = "";
+	// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+	for ( i = 0; i < x.length; i++ )
+	{
+		w3RemoveClass( x[ i ], "show" );
+		if ( x[ i ].className.indexOf( c ) > -1 ) w3AddClass( x[ i ], "show" );
+	}
 }
 
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);
-    }
-  }
-  element.className = arr1.join(" ");
+function w3AddClass( element, name )
+{
+	var i, arr1, arr2;
+	arr1 = element.className.split( " " );
+	arr2 = name.split( " " );
+	for ( i = 0; i < arr2.length; i++ )
+	{
+		if ( arr1.indexOf( arr2[ i ] ) == -1 )
+		{
+			element.className += " " + arr2[ i ];
+		}
+	}
 }
 
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
+function w3RemoveClass( element, name )
+{
+	var i, arr1, arr2;
+	arr1 = element.className.split( " " );
+	arr2 = name.split( " " );
+	for ( i = 0; i < arr2.length; i++ )
+	{
+		while ( arr1.indexOf( arr2[ i ] ) > -1 )
+		{
+			arr1.splice( arr1.indexOf( arr2[ i ] ), 1 );
+		}
+	}
+	element.className = arr1.join( " " );
 }
 
+var btnContainer = document.getElementById( "myBtnContainer" );
+var btns = btnContainer.getElementsByClassName( "btn" );
+for ( var i = 0; i < btns.length; i++ )
+{
+	btns[ i ].addEventListener( "click", function ()
+	{
+		var current = document.getElementsByClassName( "active" );
+		current[ 0 ].className = current[ 0 ].className.replace( " active", "" );
+		this.className += " active";
+	} );
+}
 
+let radios = document.querySelectorAll( "input[type=checkbox]" );
+let submit = document.getElementsByClassName( "result" )[ 0 ];
+let cartes = document.querySelectorAll( "#carte" );
 
-let radios = document.querySelectorAll("input[type=checkbox]")
-let submit = document.getElementsByClassName("result")[0]
-let cartes = document.querySelectorAll("#carte")
+submit.addEventListener( "click", function ()
+{
+	// recuperation du filtre coché
+	let recherches = [];
 
-submit.addEventListener("click", function() {
-  // recuperation du filtre coché
-  let recherches = [];
-  for (var i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      recherches.push(radios[i].value)
-    }
-  }
+	for ( var i = 0; i < radios.length; i++ )
+	{
+		if ( radios[ i ].checked )
+		{
+			recherches.push( radios[ i ].value );
+		}
+	}
 
-  // recherche d'une carte
-  let resultats = [];
-  if (recherches.length > 0) {
-    for (var i = 0; i < cartes.length; i++) {
-      for (var j = 0; j < recherches.length; j++) {
-        let styles = cartes[i].getAttribute("data-style").split(",")
-        let tailles = cartes[i].getAttribute("data-taille").split(",")
-        let couleurs = cartes[i].getAttribute("data-couleur").split(",")
+	// recherche d'une carte
+	let resultats = [];
 
-        for (var x = 0; x < styles.length; x++) {
-          // styles
-          if (styles[x] == recherches[j]) {
-            resultats.push(i);
-          }
-        }
-        for (var x = 0; x < tailles.length; x++) {
-          // tailles
-          if (tailles[x] == recherches[j]) {
-            resultats.push(i);
-          }
-        }
-        for (var x = 0; x < couleurs.length; x++) {
-          // couleurs
-          if (couleurs[x] == recherches[j]) {
-            resultats.push(i);
-          }
-        }
-      }
-    }
-  } else {
-    for (var i = 0; i < cartes.length; i++) {
-      cartes[i].style.display = "inline-block";
-    }
-    return;
-  }
+	if ( recherches.length > 0 )
+	{
+		for ( var i = 0; i < cartes.length; i++ )
+		{
+			for ( var j = 0; j < recherches.length; j++ )
+			{
+				let styles = cartes[ i ].getAttribute( "data-style" ).split( "," );
+				let tailles = cartes[ i ].getAttribute( "data-taille" ).split( "," );
+				let couleurs = cartes[ i ].getAttribute( "data-couleur" ).split( "," );
 
-  // suppression des autres cartes
-  if (resultats.length > 0) {
-    for (var i = 0; i < cartes.length; i++) {
-      cartes[i].style.display = "none";
-    }
-    for (var i = 0; i < resultats.length; i++) {
-      cartes[resultats[i]].style.display = "inline-block";
-    }
+				for ( var x = 0; x < styles.length; x++ )
+				{
+					// styles
+					if ( styles[ x ] == recherches[ j ] )
+					{
+						resultats.push( i );
+					}
+				}
+				for ( var x = 0; x < tailles.length; x++ )
+				{
+					// tailles
+					if ( tailles[ x ] == recherches[ j ] )
+					{
+						resultats.push( i );
+					}
+				}
+				for ( var x = 0; x < couleurs.length; x++ )
+				{
+					// couleurs
+					if ( couleurs[ x ] == recherches[ j ] )
+					{
+						resultats.push( i );
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		for ( var i = 0; i < cartes.length; i++ )
+		{
+			cartes[ i ].style.display = "inline-block";
+		}
+		return;
+	}
 
-    document.querySelector(".pasresultat").style.display = "none";
-  } else {
-    for (var i = 0; i < cartes.length; i++) {
-      cartes[i].style.display = "none";
-    }
+	// suppression des autres cartes
+	if ( resultats.length > 0 )
+	{
+		for ( var i = 0; i < cartes.length; i++ )
+		{
+			cartes[ i ].style.display = "none";
+		}
+		for ( var i = 0; i < resultats.length; i++ )
+		{
+			cartes[ resultats[ i ] ].style.display = "inline-block";
+		}
 
-    document.querySelector(".pasresultat").style.display = "block";
-  }
-});
+		document.querySelector( ".pasresultat" ).style.display = "none";
+	}
+	else
+	{
+		for ( var i = 0; i < cartes.length; i++ )
+		{
+			cartes[ i ].style.display = "none";
+		}
+
+		document.querySelector( ".pasresultat" ).style.display = "block";
+	}
+} );

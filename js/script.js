@@ -67,7 +67,7 @@ forRegister.click( function ()
 } );
 
 // Pour afficher/disparaître l'effet d'overlay des formulaires précédents.
-function showForm(event)
+function showForm( event )
 {
 	event.preventDefault();
 
@@ -181,9 +181,6 @@ function checkInputs()
 	return state;
 }
 
-
-
-
 form.submit( function ( event )
 {
 	if ( !checkInputs() )
@@ -226,44 +223,6 @@ $( window ).scroll( function ()
 // Pour réinitialiser le mot de passe.
 $( "#mdpforget" ).click( function ( event )
 {
-	const email = prompt( "Saisissez votre adresse électronique." );
-
-	if ( email == null || email == "" )
-	{
-		return;
-	}
-
-	// On vérifie si l'adresse électronique est valide.
-	$.post( "php/reinitialisation.php", { email: email, step: 1 } )
-		.done( function ()
-		{
-			// Si c'est le cas, on demande un nouveau mot de passe.
-			const password = prompt( "Saisissez votre nouveau mot de passe." );
-
-			if ( password == null || password == "" )
-			{
-				return;
-			}
-
-			$.post( "php/reinitialisation.php", { email: email, password: password, step: 2 } )
-				.done( function ()
-				{
-					// Finalement, on indique à l'utilisateur que le mot de passe
-					//	a été modifié !!!!!!
-					alert( "Votre mot de passe a été modifié." );
-				} )
-				.fail( function ()
-				{
-					alert( "L'adresse électronique renseignée est invalide." );
-				} );
-		} )
-		.fail( function ()
-		{
-			// Dans le cas contraire, on indique à l'utilisateur que l'adresse
-			//	électronique est invalide.
-			alert( "L'adresse électronique renseignée est invalide." );
-		} );
-
 	event.preventDefault();
 } );
 
@@ -279,36 +238,28 @@ setTimeout( function ()
 }, 3000 );
 
 // Bouton de publication.
-$(document).on( "click", "#messagerie", function ()
+$( document ).on( "click", "#messagerie", function ()
 {
 	// apparition.
-	if ($( ".sixieme" ).is(":visible")) {
+	if ( $( ".sixieme" ).is( ":visible" ) )
+	{
 		$( ".sixieme" ).fadeOut( 300 );
-	} else {
+	}
+	else
+	{
 		$( ".sixieme" ).fadeIn( 300 );
-		$(".badge").hide();
-
-		messages += Number($(".badge").first().text());
-		localStorage.setItem('messages', messages);
+		$( ".badge" ).hide();
 	}
 } );
 
-$(".container-onglets .onglets:nth-child(2)").click(function(){
-	$(".badge").hide();
-
-	messages += Number($(".badge").first().text());
-	localStorage.setItem('messages', messages);
-})
-
-$(document).on( "click", ".fleche", function ()
+$( document ).on( "click", ".fleche", function ()
 {
 	// disparition.
 	$( ".sixieme" ).fadeOut( 300 );
 } );
 
-
 //bouton entrer pour la messagerie
-$(document).on("keydown", "textarea[name = message]", function ( event )
+$( document ).on( "keydown", "textarea[name = message]", function ( event )
 {
 	if ( event.keyCode == 13 )
 	{
@@ -328,65 +279,3 @@ if ( window.location.href.includes( "?success=1" ) )
 {
 	$( ".sixieme" ).fadeIn( 300 );
 }
-
-// Notifications
-let messages = 0
-
-$.post( "php/notifications.php", function( data ) {
-	if (data != "") {
-		const json = JSON.parse(data)
-		const count = Number(localStorage.getItem('messages'))
-
-		if (json.length > count && count > 0){
-			messages = count
-		} else {
-			messages = json.length
-		}
-
-		localStorage.setItem('messages', messages);
-	}
-
-	notif()
-});
-
-function notif() {
-	$.post( "php/notifications.php", function( data ) {
-		if (data != "") {
-			const json = JSON.parse(data)
-			if (messages > json.length) {
-				messages = json.length
-			}
-
-			if (json.length != messages){
-
-				if (window.location.pathname.search("profil_tatoueur.php") > 0){
-					$.post( "dashboard.php", { origine: window.location.pathname }, function( data ) {
-						$(".sixieme").remove();
-						$(".messagerie > div").append(data)
-
-						$(".badge").text(json.length - messages);
-						$(".badge").show();
-					})
-
-
-
-				} else {
-					$.post( "messagerie.php", { origine: window.location.pathname }, function( data ) {
-						$(".sixieme").remove();
-						$("#messagerie").remove();
-
-						$("body").append(data)
-
-						$(".badge").text(json.length - messages);
-						$(".badge").show();
-					})
-				}
-			}
-		}
-	});
-}
-
-setInterval(function () {
-
-	notif()
-}, 2000);
