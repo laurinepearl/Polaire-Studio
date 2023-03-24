@@ -26,8 +26,9 @@
 
     .navbar a{
         position:relative;
+        display: inline-block;
         margin: 0.9rem;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         color:rgb(0, 0, 0);
         text-decoration: none;
         font-family: 'Poppins', sans-serif;
@@ -141,6 +142,19 @@
         border: transparent;
         font-size: 1.7em;
         cursor: pointer;
+        position: relative;
+
+        .badge {
+            display: none;
+            font-size: 10px;
+            position: absolute;
+            top: -18px;
+            right: -10px;
+            padding: 5px 5px;
+            border-radius: 50%;
+            background: red;
+            color: white;
+          }
     }
 
     @media (max-width:1000px){
@@ -168,13 +182,12 @@
         .logo2{
             display: block;
             height: 3rem;
-            text-align: center;
+            margin-left: -64px;
         }
 
         .navbar__link{
             display: flex;
-            text-align: center;
-            align-items: center;
+            margin-left: -64px;
         }
     }
 
@@ -189,19 +202,21 @@
         .navbar{
             display: none;
             position: absolute;
-            top:100%; right: -100%;
+            top:100%; 
+            right: -100%;
             background: rgb(255, 255, 255);
-            height: calc(100vh - 4rem);
+            height: calc(100vh - 0rem);
         }
 
         .navbar.active{
             display: block;
-            left: -78px;
+            left: 0;
         }
 
         .navbar__link{
             display:block;
             text-align: left;
+            margin-left: 0;
         }
 
         .navbar a{
@@ -210,6 +225,12 @@
             margin:1.5rem;
             padding:.5rem;
             font-size: 2rem;
+        }
+
+        .logo2{
+            display: block;
+            height: 3rem;
+            margin: 0px auto 0px auto;
         }
     }
 }
@@ -454,8 +475,8 @@
     z-index: 1;
     display: none;
 
+    
     article{
-        // position: relative;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -464,6 +485,7 @@
         border-radius: 12px;
         background-color: rgb(233, 233, 233);
         float:right;
+        z-index: 1000;
         margin-right: 20px;
 
         > div:nth-child(1)
@@ -496,11 +518,15 @@
 
         > div:nth-child(2) {
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
 
             .desti1{
                 float: left;
-                margin-bottom: 50px;
                 margin-left: 20px;
+                margin-top: 0;
+               
                 h4{
                     font-size: 1.2em;
                     font-family: $font2;
@@ -527,6 +553,7 @@
                 position: relative;
                 float: right;
                 margin-right: 20px;
+                margin-left: 100px;
 
                 h4{
                     font-size: 1.2em;
@@ -551,7 +578,6 @@
 
 
             }
-
         }
 
         .envoie {
@@ -559,6 +585,12 @@
             margin-top: auto;
             width:100%;
 
+            label {
+                &:hover{
+                    background-color: rgb(216, 216, 216);
+                    cursor: pointer;
+                } 
+            }
             textarea {
                 resize: none;
                 width:100%;
@@ -577,20 +609,34 @@
                 border-bottom-right-radius: 6px;
                 cursor: pointer;
 
+                &:hover{
+                    background-color: rgb(73, 73, 92);
+                }
+
             }
         }
 
     }
 
-    @media (max-width:1000px){
-        position: absolute;
-        top: calc(300px + 340px); // Taille du footer + taille du conteneur (à partir de la fin de la page)
+    @media (max-width:610px)
+    { 
+        right: 0;
+        top: calc(70vh - 400px + 15px);
+        position: fixed;
+        z-index: 1;
+        display: none;
 
+
+        article{
+            width: 435px;
+            height: 500px;
+        
+
+
+        }     
     }
 
-
 }
-
 
 %footer
 {

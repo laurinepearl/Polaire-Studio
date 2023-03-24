@@ -1,27 +1,41 @@
-const onglets = Array.from( document.querySelectorAll( ".onglets" ) );
-const contenu = Array.from( document.querySelectorAll( ".contenu" ) );
-const illus = document.querySelector( ".illus" );
+const onglets = $(".onglets");
+const contenu = $(".contenu");
+const illus = $(".illus");
 
+onglets.click(function () {
 
-onglets.forEach( onglet =>
-{
-  onglet.addEventListener( "click", tabsAnimation );
-} );
+	illus.hide();
 
-let index = 0;
+	// Onglets
+	onglets.removeClass("active");
+	$(this).addClass("active")
 
-function tabsAnimation( e )
-{
+	// Contenus
+	contenu.removeClass("active-contenu");
+	$( contenu.get($(this).index()) ).addClass("active-contenu")
 
-  illus.style.display = "none";
+})
 
-  const el = e.target;
-  onglets[ index ].classList.remove( "active" );
-  contenu[ index ].classList.remove( "active-contenu" );
+const search = $("input[type = search]");
+const sixieme = $("section.sixieme");
 
-  index = onglets.indexOf( el );
+search.on('input', function() {
+	const prenom = search.val().toLowerCase()
+	if (prenom != "") {
 
-  onglets[ index ].classList.add( "active" );
-  contenu[ index ].classList.add( "active-contenu" );
+		$("h3.prenom").each( function(index, element) {
+			const parent = $(element).parent().parent().parent()
 
-}
+			if (!element.innerHTML.toLowerCase().search(prenom)) {
+				parent.show()
+			} else {
+
+				parent.hide()
+			}
+		})
+	} else 
+	{
+		sixieme.show()
+	}
+	
+});

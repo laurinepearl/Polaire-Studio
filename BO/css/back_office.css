@@ -1,154 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+
 body
 {
-	background-color: #bcd5ff;
-	color: #131313;
+	/* background-color: #bcd5ff; */
+	background-image: url("../../images/bo/nuages.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+
+
 
 }
 
-/* FORMES DE COULEURS LORS DE LA CONNEXION AU BO */
-.blob_orange_devant, .blob_orange_derriere{ 
-	position: absolute;
-	right: 0px;
-	top:-10%;
-	}
 
-.blob_bleu_devant, .blob_bleu_derriere {
-										position: absolute;
-										left: -10%;
-										bottom: 0px;
-										
-}
-
-	.blob_bleu_devant, .blob_bleu_derriere, .blob_orange_devant, .blob_orange_derriere {	
-		z-index: -1000;
-		width:460px;
-		height:460px;}
 
 /* CONNEXION */
-/* FORMULAIRE DE CONNEXION		 */
-#connexion{margin:15% auto 5%;
-			height:500px;
-			width: 20%;
-			
-		}
-			
-#connexion form{width: 100%;
-				font-size:1.8em ;
-				font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      			}       
+/* FORMULAIRE DE CONNEXION */
+#connexion{
+	display: flex;
+    justify-content: center;
+	margin-top: 30vh;
 
-#connexion legend{font-size:2.2em ;
-		font-weight: bold;
+		}
+
+#connexion form{
+	background-color: rgba(228, 228, 228, 0.62);
+	padding-top: 41px;
+    padding-bottom: 52px;
+    padding-right: 15px;
+    padding-left: 15px;
+	border-radius: 0 100px 0 100px;
+	box-shadow: 5px 12px 23px 2px rgb(51 51 51 / 76%);
+      			}
+
+#connexion label{
+		font-size:1.8em;
 		letter-spacing: 1px;
-		margin-left: 60px;
-		margin-bottom: 30px;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-		font-weight:bold;}
+		margin-left: 68px;
+		font-family:'Nothing You Could Do';
+	}
 
 
 
 
 #connexion input[type="text"],#connexion input[type="password"]{
 				display: block;
-				background:rgba(255, 255, 255, 0.596);
+				background:rgba(255, 255, 255, 0.508);
 				border:none;
 				border-left:1px solid rgba(255,255,255,0.3);
 				border-top:1px solid rgba(255,255,255,0.3);
 				height: 55px;
 				width: 300px;
 				border-radius:50px;
-				box-shadow:5px 12px 9px 1px rgba(51, 51, 51, 0.39);
-				margin-top: 10px;
+				box-shadow:5px 12px 9px 1px rgba(51, 51, 51, 0.337);
+				margin-top: 20px;
 				margin-bottom: 30px;
-				margin-right: 30px;
-				font-size:1em ;
-				font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      }       
+				margin-right: 15px;
 
-	  
-	 
+      }
+
+	  ::placeholder{
+        color:rgb(0, 0, 0);
+        font-size: 1.3em;
+		font-family:'Poppins';
+      }
+
+
+
 #connexion input[type="submit"]{
 								cursor: pointer;
 								display: block;
-								background:rgba(255, 255, 255, 0.596);
+								background:rgba(255, 255, 255, 0.508);
 								border:none;
 								border-left:1px solid rgba(255,255,255,0.3);
 								border-top:1px solid rgba(255,255,255,0.3);
 								height: 45px;
 								width: 220px;
 								border-radius:50px;
-								box-shadow:5px 12px 9px 1px rgba(51, 51, 51, 0.39);
+								box-shadow:5px 12px 9px 1px rgba(51, 51, 51, 0.282);
 								margin-left: 40px;
-								color: rgb(235, 143, 37);
-								font-size:1em ;
-								font-weight: bold;
+								color: rgb(239, 128, 0);
+								font-weight: 600;
+								font-size:1.5em;
 								font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 								}
 
 #connexion input[type="submit"]:hover {
-								background:rgb(228, 228, 228);	
+								background:rgb(228, 228, 228);
 }
 
 
 /* BACK OFFICE */
 /* ECRITURE BACK OFFICE DANS LA BO */
 
-#bo> h2 ~ form{ 
+#bo> h2 ~ form{
 			position: absolute;
 			top: 30%;
 			left: 9%;
 }
 
-#bo> h2{ 
+#bo> h2{
 		 font-size:3em;
-		 font-family: Arial, Helvetica, sans-serif;
+		 font-family:  sans-serif;
 		 font-weight: bolder;
 		 letter-spacing: 2px;
 		 color: rgb(255, 255, 255);
 		 background: rgba(45, 79, 122, 0.198);
 		 backdrop-filter: blur(12px);
 		 border-bottom: 1px solid rgba(255, 255, 255, 0.596);
-		 box-shadow:10px 10px 60px -8px rgba(17, 32, 73, 0.5);
-		 z-index: 2;		 
-		 width: 100%; 
-		 margin-left:5px;
+		 box-shadow: 12px 23px 58px 3px rgba(0, 0, 0, 0.53);
+		 z-index: 2;
+		 width: 100%;
 		 padding-top:55px;
 		 padding-bottom: 10px;
- 		
+
 		}
 
 
-/* TABLE DE LA BDD		 */
-#bo input { 
+/* TABLE DE LA BDD*/
+#bo input {
 			border: transparent;
 			margin-right: 30px;
 			margin-bottom: 15px;
-			color: white;
 			letter-spacing: 1px;
 			font-size: 1.6em;
 			font-weight: bold;
 			width: 357px;
 			border-radius: 10px;
-			background-color: rgb(86, 127, 192);
-			box-shadow: -1px 2px 15px 5px rgba(0, 12, 83, 0.37) inset;
-			cursor:pointer; 
+			font-family:sans-serif;
+			font-weight:normal;
+			background:rgba(80, 189, 154, 0.717);
+			border-left:1px solid rgba(255,255,255,0.3);
+			border-top:1px solid rgba(255,255,255,0.3);
+			cursor:pointer;
 }
 
 #bo input:hover{
-				background-color: rgb(49, 97, 173);
-				box-shadow: none;
+	background:rgba(24, 144, 106, 0.717);
+
 }
 
 
 /* BOUTON DE DECONNEXION */
-#deco .deconnexion {		
+#deco .deconnexion {
 					background-color: rgb(255, 177, 52);
 					color: white;
 					font-weight: bold;
 					cursor: pointer;
 					font-size:1.3em;
-					width: 155px;
-					height: 60px;
+					width: 170px;
+    				height: 65px;
 					border: transparent;
 					border-radius: 35px;
 					position: absolute;
@@ -176,16 +180,16 @@ h1 {
 
 form ~ table { margin-top:3%;}
 
-form ~ table > tbody > tr > th { 
+form ~ table > tbody > tr > th {
 	font-size: 1.3em;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
-form ~ table > tbody > tr { 
+form ~ table > tbody > tr {
 							font-size:1.3em;
 							font-family: Arial, Helvetica, sans-serif;
-						
+
 }
 
 
@@ -207,22 +211,22 @@ form ~ table > tbody > tr:nth-child(odd)
 
  input.boutons:hover{
 	background-color: rgb(207, 207, 207);
-				
+
 }
 
-table{ 
+table{
 	  background-color: rgb(238, 225, 170);
 	  border-collapse: collapse;
 }
 
- table ~ a { 
+ table ~ a {
 			font-size: 1.5em;
 			color: black;
 			position: relative;
-			top:5vh;		
+			top:5vh;
 }
 
 table ~ a:hover{
 	color: rgb(93, 93, 187);
-				
+
 }

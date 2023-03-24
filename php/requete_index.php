@@ -1,5 +1,5 @@
 <?php
-	include("pdo.inc.php");
+	include_once("pdo.inc.php");
 
 	if (!isset( $_GET["lang"])) {
 		$_GET["lang"] = 'FR';

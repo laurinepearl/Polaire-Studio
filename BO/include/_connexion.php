@@ -7,7 +7,7 @@ try {   /* Utilisation du module PDO (Php Data Objects)
 	      - le nom de la BDD : écrit sur le format portfolio2019-2020_xxx où xxx correspond à votre nom
 	      - le passwd : vide '' pour Windows et 'root' pour OSX
 	*/
-    $bdd = new PDO('mysql:host=localhost;dbname=projet_ferreira;charset=utf8', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=projet_ferreira;charset=utf8', 'root', '');
 }
 catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());

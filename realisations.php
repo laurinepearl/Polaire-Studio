@@ -11,18 +11,32 @@
 
 	$pdo = getPDO();
 	$id = $_GET["id"];
-	$html = "";
+	$nombre = 1;
+	$galerie = "";
+	$slides = "";
 
-	if (file_exists("php/upload/$id/"))
+	if (file_exists("php/upload/$id/realisations/"))
 	{
-		$photos = scandir("php/upload/$id/");
+		$photos = scandir("php/upload/$id/realisations/");
+		$photos = array_diff($photos, array('..', '.', ".DS_Store"));
 
 		foreach ($photos as $photo)
 		{
-			if ($photo == ".." or $photo == ".")
-				continue;
+			$galerie .= "<div class='column'><img src='php/upload/$id/realisations/" . $photo . "' onclick='openModal(); currentSlide($nombre);' class='hover-shadow' alt=''></img></div>";
+			$slides .= "<div class='mySlides'>
+				<div class='favorite'>
+					<form action='php/vosidees.php' method='POST'>
+						<button class='enregister' data-login='" . (isset($_SESSION["identification"]) ? "false" : "true") . "' onClick='closeModal();' type='submit' name='submit'>Enregistrer </button>
+						<input type='hidden' name='image' value='upload/$id/realisations/" . $photo . "' />
+						<input type='hidden' name='id_tatoueur' value='$id' />
+						<input type='hidden' name='origine' value='" . $_SERVER['PHP_SELF'] . "' />
+					</form>
+				</div>
+				<div class='numbertext'>$nombre / " . count($photos) . "</div>
+					<img src='php/upload/$id/realisations/" . $photo . "'>
+				</div>";
 
-			$html .= "<div><img class='myImg' src='php/upload/$id/" . $photo . "' alt=''></img></div>";
+			$nombre++;
 		}
 	}
 ?>
@@ -51,27 +65,32 @@
 		<section id="co">
 			<?php
 				include("connexion.php");
+
+				if (isset($_GET["message"]) AND $_GET["message"]=="3")
+				{
+					echo("<div class='snackbar'>L'image a bien été enregistrée.</div>\n");
+				}
 			?>
 		</section>
 
-
 		<section id="galerie">
-			<div class="parent">
-				<?php echo($html); ?>
-			</div>
+			<article class="row">
+				<?php echo($galerie); ?>
+			</article>
 
 			<div id="myModal" class="modal">
 
-				<span class="close">&times;</span>
+				<span class="close cursor" onclick="closeModal()">&times;</span>
 
-				<img class="modal-content" id="img01">
+				<div class="modal-content">
+					<?php echo($slides); ?>
 
-				<div id="caption"></div>
+					<!-- fleches -->
+					<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+					<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				</div>
 			</div>
 		</section>
-
-
-
 
 	<a id="remonter" href="#">
 		<i class="fas fa-chevron-up"></i>

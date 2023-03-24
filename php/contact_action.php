@@ -13,26 +13,26 @@
 
     if (!verifInfo($nom, 2))
     {
-        $_SESSION["erreur"] =("<p class= 'message'>". "Votre nom est invalide ! Il doit faire 2 caractères minimum sans caractères spéciaux.". "</p>\n");
-        header("Location: ../contact.php?erreur=1");
+        $_SESSION["erreur"] = "<p class= 'message'>". "Votre nom est invalide ! Il doit faire 2 caractères minimum sans caractères spéciaux.". "</p>\n";
+        header("Location: ../contact.php?erreur=3");
         exit();
     }
     if (!verifInfo($prenom, 2))
     {
-        $_SESSION["erreur"] = ("<p class= 'message'>"."Votre adresse e-mail est invalide ! Il doit faire 8 caractères minimum sans caractères spéciaux.". "</p>\n");
-        header("Location: ../contact.php?erreur=1");
+        $_SESSION["erreur"] = "<p class= 'message'>"."Votre prénom est invalide ! Il doit faire 2 caractères minimum sans caractères spéciaux.". "</p>\n";
+        header("Location: ../contact.php?erreur=3");
         exit();
     }
-    if (!verifInfo($tel, 10))
+    if (!verifInfo($tel, 10, 10))
     {
-        $_SESSION["erreur"] = ("<p class= 'message'>"."Votre adresse e-mail est invalide ! Il doit faire 8 caractères minimum sans caractères spéciaux.". "</p>\n");
-        header("Location: ../contact.php?erreur=1");
+        $_SESSION["erreur"] = "<p class= 'message'>"."Votre n° de téléphone est invalide ! Il doit faire 10 caractères sans caractères spéciaux.". "</p>\n";
+        header("Location: ../contact.php?erreur=3");
         exit();
     }
     if (!verifInfo($email, 8))
     {
-        $_SESSION["erreur"] = ("<p class= 'message'>"."Votre adresse e-mail est invalide ! Il doit faire 8 caractères minimum sans caractères spéciaux.". "</p>\n");
-        header("Location: ../contact.php?erreur=1");
+        $_SESSION["erreur"] = "<p class= 'message'>"."Votre adresse e-mail est invalide ! Il doit faire 8 caractères minimum sans caractères spéciaux.". "</p>\n";
+        header("Location: ../contact.php?erreur=3");
         exit();
     }
 

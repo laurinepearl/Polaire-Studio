@@ -1,86 +1,288 @@
-// const date = new Date();
+const months = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin  ",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre"
+];
 
-// const renderCalendar = () => {
-//   date.setDate(1);
+const weekdays = [ "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche" ];
 
-//   const monthDays = document.querySelector(".days");
+// Váriavel principal
+let date = new Date();
 
-//   const lastDay = new Date(
-//     date.getFullYear(),
-//     date.getMonth() + 1,
-//     0
-//   ).getDate();
+function pad( number )
+{
+    if ( number < 10 )
+    {
+        return '0' + number;
+    }
+    return number;
+}
 
-//   const prevLastDay = new Date(
-//     date.getFullYear(),
-//     date.getMonth(),
-//     0
-//   ).getDate();
+// Função que retorna a data atual do calendário
+function getCurrentDate( element, asString )
+{
+    if ( element )
+    {
+        if ( asString )
+        {
+            const day = date.getDay() - 1;
+            return element.textContent = weekdays[ day === -1 ? 6 : day ] + ' ' + date.getDate() + " " + months[ date.getMonth() ] + " " + date.getFullYear();
+        }
+        return element.value = date.getFullYear() + '-' + ( pad( date.getMonth() + 1 ) ) + '-' + pad( date.getDate() );
+    }
+    return date;
+}
 
-//   const firstDayIndex = date.getDay() ;
+// Função principal que gera o calendário
+function generateCalendar()
+{
+    $(".pasdedate").hide()
 
-//   const lastDayIndex = new Date(
-//     date.getFullYear(),
-//     date.getMonth() + 1,
-//     0
-//   ).getDay();
+    // Pega um calendário e se já existir o remove
+    const calendar = document.getElementById( 'calendar' );
+    if ( calendar )
+    {
+        calendar.remove();
+    }
 
-//   const nextDays = 7 ;
+    // Cria a tabela que será armazenada as datas
+    const table = document.createElement( "table" );
+    table.id = "calendar";
 
-//   const months = [
-//     "Janvier",
-//     "Février",
-//     "Mars",
-//     "Avril",
-//     "Mai",
-//     "Juin",
-//     "Juillet",
-//     "Août",
-//     "Septembre",
-//     "Octobre",
-//     "Novembre",
-//     "Decembre",
-//   ];
+    // Cria os headers referentes aos dias da semana
+    const trHeader = document.createElement( 'tr' );
+    trHeader.className = 'weekends';
+    weekdays.map( week =>
+    {
+        const th = document.createElement( 'th' );
+        const w = document.createTextNode( week.substring( 0, 3 ) );
+        th.appendChild( w );
+        trHeader.appendChild( th );
+    } );
 
-//   document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+    // Adiciona os headers na tabela
+    table.appendChild( trHeader );
 
-//   let options = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+    //Pega o dia da semana do primeiro dia do mês
+    const weekDay = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        0
+    ).getDay();
 
-//   document.querySelector(".date p").innerHTML = new Date().toLocaleDateString("fr-FR", options);
+    //Pega o ultimo dia do mês
+    const lastDay = new Date(
+        date.getFullYear(),
+        date.getMonth() + 1,
+        0
+    ).getDate();
 
-//   let days = "";
+    let tr = document.createElement( "tr" );
+    let td = '';
+    let empty = '';
+    let btn = document.createElement( 'button' );
+    let week = 0;
 
-//   for (let x =  firstDayIndex -2 ; x >= 0; x--) {
-//     days += `<div class="prev-date">${prevLastDay - x }</div>`;
-//   }
+    // Se o dia da semana do primeiro dia do mês for maior que 0(primeiro dia da semana);
+    while ( week < weekDay )
+    {
+        td = document.createElement( "td" );
+        empty = document.createTextNode( ' ' );
+        td.appendChild( empty );
+        tr.appendChild( td );
+        week++;
+    }
 
-//   for (let i = 1; i <= lastDay; i++) {
-//     if (
-//       i == new Date().getDate() &&
-//       date.getMonth() == new Date().getMonth()
-//     ) {
-//       days += `<div class="today">${i}</div>`;
-//     } 
-//     else {
-//       days += `<div>${i}</div>`;
-//     }
-//   }
-  
-// //   voir les chiffres
-//   for (let j = 1; j <= nextDays; j++) {
-//     days += `<div class="next-date">${j}</div>`;
-//     monthDays.innerHTML = days;
-//   }
-// };
+    // Vai percorrer do 1º até o ultimo dia do mês
+    for ( let i = 1; i <= lastDay; )
+    {
+        // Enquanto o dia da semana for < 7, ele vai adicionar colunas na linha da semana
+        while ( week < 7 )
+        {
+            td = document.createElement( 'td' );
+            let text = document.createTextNode( i );
+            btn = document.createElement( 'button' );
+            btn.className = "btn-day";
+            btn.addEventListener( 'click', function () { changeDate( this ); } );
+            week++;
 
-// document.querySelector(".prev").addEventListener("click", () => {
-//   date.setMonth(date.getMonth() - 1);
-//   renderCalendar();
-// });
+            if (week == 6 || week == 7) {
+                btn.addEventListener("click", function() {
+                    $(".total").hide()
+                    $(".pasdedate").show()
+                })
+            }
 
-// document.querySelector(".next").addEventListener("click", () => {
-//   date.setMonth(date.getMonth() + 1);
-//   renderCalendar();
-// });
+            // Controle para ele parar exatamente no ultimo dia
+            if ( i <= lastDay )
+            {
+                i++;
+                btn.appendChild( text );
+                td.appendChild( btn );
+            } else
+            {
+                text = document.createTextNode( ' ' );
+                td.appendChild( text );
+            }
+            tr.appendChild( td );
+        }
+        // Adiciona a linha na tabela
+        table.appendChild( tr );
 
-// renderCalendar();
+        // Cria uma nova linha para ser usada
+        tr = document.createElement( "tr" );
+
+        // Reseta o contador de dias da semana
+        week = 0;
+    }
+    // Adiciona a tabela a div que ela deve pertencer
+    const content = document.getElementById( 'table' );
+    if (content === null) return;
+    checkDate(date);
+    content.appendChild( table );
+    changeActive();
+    changeHeader( date );
+    document.getElementById( 'date' ).textContent = date;
+    getCurrentDate( document.getElementById( "currentDate" ), true );
+    getCurrentDate( document.getElementById( "date" ), false );
+}
+
+// Altera a data atráves do formulário
+function setDate( form )
+{
+    let newDate = new Date( form.date.value );
+    date = new Date( newDate.getFullYear(), newDate.getMonth(), newDate.getDate() );
+    generateCalendar();
+    return false;
+}
+
+// Método Muda o mês e o ano do topo do calendário
+function changeHeader( dateHeader )
+{
+    const month = document.getElementById( "month-header" );
+    if ( month.childNodes[ 0 ] )
+    {
+        month.removeChild( month.childNodes[ 0 ] );
+    }
+    const headerMonth = document.createElement( "h1" );
+    const textMonth = document.createTextNode( months[ dateHeader.getMonth() ] + " " + dateHeader.getFullYear() );
+    headerMonth.appendChild( textMonth );
+    month.appendChild( headerMonth );
+}
+
+// Função para mudar a cor do botão do dia que está ativo
+function changeActive()
+{
+    let btnList = document.querySelectorAll( 'button.active' );
+    btnList.forEach( btn =>
+    {
+        btn.classList.remove( 'active' );
+    } );
+    btnList = document.getElementsByClassName( 'btn-day' );
+    for ( let i = 0; i < btnList.length; i++ )
+    {
+        const btn = btnList[ i ];
+        if ( btn.textContent === ( date.getDate() ).toString() )
+        {
+            btn.classList.add( 'active' );
+        }
+    }
+}
+
+// Função que pega a data atual
+function resetDate()
+{
+    date = new Date();
+    generateCalendar();
+}
+
+function checkDate(selection)
+{
+    let timestamp = new Date(selection)
+    timestamp = date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate());
+
+    // réinitialisation boutons
+    let heures = document.querySelectorAll(".horaire button")
+
+    for (let text of heures) {
+        text.style.display = "inline-block";
+    }
+
+    // filtrage des boutons avec les rendez-vous
+    for (let rdv of rendezvous) {
+        let horaire = rdv["horaires"].split(" | ")
+        let heure = horaire[0]
+        let date = horaire[1]
+
+        if (date == timestamp) {
+            for (let text of heures) {
+                if (text.innerHTML == heure) {
+                    text.style.display = "none";
+                }
+            }
+        }
+    }
+}
+
+// Muda a data pelo numero do botão clicado
+function changeDate( button )
+{
+    $(".pasdedate").hide()
+    $(".total").show()
+
+    let newDay = parseInt( button.textContent );
+    date = new Date( date.getFullYear(), date.getMonth(), newDay );
+
+    checkDate(date);
+
+    generateCalendar();
+}
+
+// Funções de avançar e retroceder mês e dia
+function nextMonth()
+{
+    date = new Date( date.getFullYear(), date.getMonth() + 1, 1 );
+    generateCalendar( date );
+}
+
+function prevMonth()
+{
+    date = new Date( date.getFullYear(), date.getMonth() - 1, 1 );
+    generateCalendar( date );
+}
+
+
+function prevDay()
+{
+    date = new Date( date.getFullYear(), date.getMonth(), date.getDate() - 1 );
+    generateCalendar();
+}
+
+function nextDay()
+{
+    date = new Date( date.getFullYear(), date.getMonth(), date.getDate() + 1 );
+    generateCalendar();
+}
+
+document.onload = generateCalendar( date );
+
+$(".heure").click(function() {
+    var id = $(this).parent().attr("data-id");
+    var date = $(".text-field").val()
+    var heure = $(this).html()
+
+    $(".heure").append('<form action="formulaire_rdv.php" method="POST" />');
+    $(".heure form").append('<input type="hidden" name="id_tatoueur" value="' + id + '" />');
+    $(".heure form").append('<input type="hidden" name="date" value="' + date + '" />');
+    $(".heure form").append('<input type="hidden" name="heure" value="' + heure + '"/>');
+    $(".heure form").submit()
+})

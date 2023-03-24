@@ -1,11 +1,18 @@
 <?php
 
-ini_set("display_errors", 1);
+	ini_set("display_errors", 1);
 	ini_set("display_startup_errors", 1);
 
 	error_reporting(E_ALL);
 
-$pdo = getPDO();
+	if (!isset($_SESSION))
+	{
+		session_start();
+	}
+
+	include("php/requete_index.php");
+
+	$pdo = getPDO();
 
 	function message ($pdo, $id)
 	{
@@ -31,32 +38,62 @@ $pdo = getPDO();
 		return $resultat["role"];
 	}
 
+	function sendimage($id)
+	{
+		$files = scandir("php/upload/messages/");
+
+		foreach ($files as $file)
+		{
+			if (strpos($file, "$id.") !== false)
+			{
+				return "php/upload/messages/$file";
+			}
+		}
+
+		return "";
+	}
+
+
 	if (isset($_SESSION["identification"]["id_utilisateur"]))
 	{
 		$id = $_SESSION["identification"]["id_utilisateur"];
 		$messages = message($pdo, $id);
 
 		$html2 = "";
-		foreach($messages as $message)
-		{
-			$role = role ($pdo, $message ["id_utilisateur"]);
-			if ($role == 'tatoueur')
-			{
-				$html2.='
-				<div class="desti1">
-					<h4>'.prenom2 ($pdo, $message ["id_utilisateur"]).' </h4>
+        foreach ($messages as $message)
+        {
+            $role = role($pdo, $message ["id_utilisateur"]);
+
+			if ($role == 'tatoueur') {
+                $html2.='<div class="desti1">';
+			} else {
+				$html2.='<div class="desti2">';
+            }
+
+			$html2 .= '<h4>'.prenom2 ($pdo, $message ["id_utilisateur"]).' </h4>';
+			$image = sendimage($message ["id_message"]);
+
+			if ($image == "") {
+				$html2 .= '
 					<p class="message tattoo">  '.$message ["message"].'</p>
-				</div>';
+				';
+			} else {
+				if ($message ["message"] == "") {
+
+					$html2 .= '
+						<img src="' . sendimage($message ["id_message"]) . '" alt="" style="width: 150px;height: 180px;">
+					';
+				} else {
+
+					$html2 .= '
+						<p class="message tattoo">  '.$message ["message"].'</p>
+						<img src="' . sendimage($message ["id_message"]) . '" alt="" style="width: 150px;height: 180px;">
+					';
+				}
 			}
-			else
-			{
-				$html2.='
-				<div class="desti2">
-					<h4> '.prenom2 ($pdo, $message ["id_utilisateur"]).'</h4>
-					<p class="message client"> '.$message ["message"].'</p>
-				</div>';
-			}
-		}
+
+			$html2 .= '</div>';
+        }
 	}
 ?>
 
@@ -77,15 +114,29 @@ $pdo = getPDO();
 					?>
 				</div>
 
-				<form class="envoie" action="php/messagerie_action.php" method="POST">
-					<textarea name="message"  placeholder= "Ecrivez votre message..." required ></textarea>
-					<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
+				<form class="envoie" enctype="multipart/form-data" action="php/messagerie_action.php" method="POST">
+					<textarea name="message"  placeholder= "Ecrivez votre message..." ></textarea>
+
+					<?php if (isset($_POST["origine"])) : ?>
+						<input type="hidden" name="origine" value="<?= $_POST["origine"] ?>" />
+					<?php else : ?>
+						<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
+					<?php endif; ?>
+
+					<label>
+						<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
+						<input name="userfile3" type="file" style=" display: none; visibility: none;">
+					</label>
+
 					<button type="submit" class="comment_m"> <i class="fa-solid fa-location-arrow"></i> </button>
 				</form>
 			</article>
 		</section>
 
-	<button type="button" id="messagerie">
-		<i class="fa-solid fa-comment-dots"></i>
-	</button>
+	<?php if ( $_SESSION["identification"]["role"] == 'client') : ?>
+		<button type="button" id="messagerie">
+			<i class="fa-solid fa-comment-dots"></i>
+			<span class="badge"></span>
+		</button>
+	<?php endif; ?>
 <?php endif; ?>
