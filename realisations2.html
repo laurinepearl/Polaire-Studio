@@ -16,11 +16,11 @@
 	</head>
 	<body>
 		<header class="header">
-			<a href="index.html" class="logo">
+			<a href="#" class="logo">
 				<img src="images/logo/logo_h.svg">
 			</a>
 
-			<a href="index.html">
+			<a href="#">
 				<img class="logo2" src="images/logo/logo_2emeformat.svg">
 			</a>
 
@@ -151,91 +151,96 @@
 
 		<section id="galerie">
 			<article class="row">
-				<div class='column'><img src='php/upload/10/realisations/0.jpeg' onclick='openModal(); currentSlide(1);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/1.jpeg' onclick='openModal(); currentSlide(2);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/2.jpeg' onclick='openModal(); currentSlide(3);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/3.jpeg' onclick='openModal(); currentSlide(4);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/4.jpeg' onclick='openModal(); currentSlide(5);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/5.jpeg' onclick='openModal(); currentSlide(6);' class='hover-shadow' alt=''></img></div><div class='column'><img src='php/upload/10/realisations/6.jpeg' onclick='openModal(); currentSlide(7);' class='hover-shadow' alt=''></img></div>			</article>
+				<div class="column"><img src="images/couleurs/image.jpeg" onclick="openModal(); currentSlide(1);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image2.jpeg" onclick="openModal(); currentSlide(2);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image3.jpeg" onclick="openModal(); currentSlide(3);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image4.jpeg" onclick="openModal(); currentSlide(4);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image6.jpeg" onclick="openModal(); currentSlide(5);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image7.jpeg" onclick="openModal(); currentSlide(6);" class="hover-shadow"></img></div>
+				<div class="column"><img src="images/couleurs/image8.jpeg" onclick="openModal(); currentSlide(7);" class="hover-shadow"></img></div>
+			</article>
 
 			<div id="myModal" class="modal">
-
 				<span class="close cursor" onclick="closeModal()">&times;</span>
 
 				<div class="modal-content">
-					<div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/0.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>1 / 7</div>
-					<img src='php/upload/10/realisations/0.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/1.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>2 / 7</div>
-					<img src='php/upload/10/realisations/1.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/2.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>3 / 7</div>
-					<img src='php/upload/10/realisations/2.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/3.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>4 / 7</div>
-					<img src='php/upload/10/realisations/3.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/4.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>5 / 7</div>
-					<img src='php/upload/10/realisations/4.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/5.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>6 / 7</div>
-					<img src='php/upload/10/realisations/5.jpeg'>
-				</div><div class='mySlides'>
-				<div class='favorite'>
-					<form action='php/vosidees.php' method='POST'>
-						<button class='enregister' data-login='true' onClick='closeModal();' type='submit' name='submit'>Enregistrer</button>
-						<input type='hidden' name='image' value='upload/10/realisations/6.jpeg' />
-						<input type='hidden' name='id_tatoueur' value='10' />
-						<input type='hidden' name='origine' value='/Polaire-Studio/realisations.php' />
-					</form>
-				</div>
-				<div class='numbertext'>7 / 7</div>
-					<img src='php/upload/10/realisations/6.jpeg'>
-				</div>
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">1 / 7</div>
+						<img src="images/couleurs/image.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">2 / 7</div>
+						<img src="images/couleurs/image2.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">3 / 7</div>
+						<img src="images/couleurs/image3.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">4 / 7</div>
+						<img src="images/couleurs/image4.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">5 / 7</div>
+						<img src="images/couleurs/image6.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">6 / 7</div>
+						<img src="images/couleurs/image7.jpeg">
+					</div>
+
+					<div class="mySlides">
+						<div class="favorite">
+							<form method="POST">
+								<button class="enregister" data-login="true" onClick="closeModal();" type="submit" name="submit">Enregistrer</button>
+							</form>
+						</div>
+
+						<div class="numbertext">7 / 7</div>
+						<img src="images/couleurs/image8.jpeg">
+					</div>
+
 					<!-- fleches -->
 					<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 					<a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -253,8 +258,7 @@
 				<div></div>
 
 				<form class="envoie" enctype="multipart/form-data" method="POST">
-					<textarea name="message"  placeholder= "Ecrivez votre message..."></textarea>
-					<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
+					<textarea name="message"  placeholder= "Écrivez votre message..."></textarea>
 
 					<label>
 						<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
@@ -295,7 +299,7 @@
 					</a>
 				</article>
 
-				<a class="contactezmoi"href="contact.php">Contactez-nous</a>
+				<a class="contactezmoi"href="contact.html">Contactez-nous</a>
 
 				<br /><br /><br />
 
@@ -305,11 +309,11 @@
 
 			<section>
 				<ul>
-					<li><a href="index.php">Accueil</a></li>
-					<li><a href="apropos.php">À propos</a></li>
-					<li><a href="tatouages.php">Tatoueurs</a></li>
-					<li><a href="rendezvous.php">Réservation</a></li>
-					<li><a href="contact.php">Contact</a></li>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
 				</ul>
 			</section>
 
