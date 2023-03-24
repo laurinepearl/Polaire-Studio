@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="scss/profil/profil_tatoueur.css" />
+		<link rel="stylesheet" href="scss/reset.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"/>
+
+		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+		<script src="js/script.js" defer></script>
+		<script src="js/profil.js" defer></script>
+
+		<title>Polaire Studio</title>
+	</head>
+	<body>
+		<header class="header">
+			<a href="index.html" class="logo">
+				<img src="images/logo/logo_h.svg">
+			</a>
+
+			<a href="index.html">
+				<img class="logo2" src="images/logo/logo_2emeformat.svg">
+			</a>
+
+			<nav class="navbar">
+				<ul class="navbar__link">
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- lors de la connexion cela permet d'afficher le dashboard du client concerné -->
+			<div class="icons">
+				<button class="btn" id="displayform">
+					<i class="fa-solid fa-user"></i>
+				</button>
+
+				<!-- avec "role" la bdd vérifie si la personne connecté est un tatoueur ou un client
+				mais lors de l'inscription le "role" est définis par défaut en "client"
+				pour le définir en "tatoueur" il faut le faire manuellement dans la base de donnée -->
+				<ul>
+					<li id="lg">Langues
+						<ul class="deux">
+							<li class="francais"><a href="">Français</a></li>
+							<li class="anglais"><a href="">Anglais</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="fas fa-bars" id="menu-btn"></div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="identite">
+				<h2>Bonjour</h2>
+				<h3>Erica</h3>
+			</div>
+
+			<div class="container-onglets">
+				<div class="onglets">
+					<i class="fa-solid fa-calendar-days"></i>
+					<span>Rendez-vous</span>
+				</div>
+
+				<div class="onglets">
+					<i class="fa-solid fa-comment"></i>
+					<span>Messagerie</span>
+					<span class="badge"></span>
+				</div>
+
+				<div class="onglets">
+					<i class="fa-solid fa-user-pen"></i>
+					<span>Mon profil</span>
+				</div>
+
+				<form method="POST">
+					<div class="suppression" onclick="if(!confirm('Voulez-vous vraiment supprimer ce compte ?')) return false; else this.parentNode.submit()">
+						<i class="fa-solid fa-trash-can"></i>
+						<input name="suppression" type="submit"  value="Supprimer" />
+					</div>
+				</form>
+
+				<form method="POST">
+					<div class="deconnexion" onclick="if(!confirm('Voulez-vous vraiment vous déconnecter ?')) return false; else this.parentNode.submit()">
+						<i class="fa-solid fa-power-off"></i>
+						<input name="deconnexion" type="submit"  value="Déconnexion" />
+					</div>
+				</form>
+			</div>
+
+			<div class="container-body">
+				<div class="illus">
+					<img src="images/humaans2.png" />
+					<p>Cliquez sur l'un des onglets</p>
+				</div>
+
+				<div class="contenu rdv">
+					<h3>Rendez-vous</h3>
+
+					<div class="horaire">
+						<h4>Horaires</h4>
+
+						<form method="POST">
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="1" />10h - 11h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="2" />11h - 12h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="3" />14h - 15h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="4" />15h - 16h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="5" />16h - 17h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="6" />17h - 18h
+							<input type="checkbox" class="btn btn-small" name="heure[]" value="7" />18h - 19h
+							<input type="submit" id="valider" value="Valider les horaires" />
+						</form>
+					</div>
+
+					<article class="recap">
+						<h4>Prochain Rendez-vous</h4>
+
+						<div class="recap_entier">
+							<h4>Polaire Studio</h4>
+
+							<p>15 Avenue de la République - Nice, salon de tatouage.</p>
+
+							<div class="client">
+								<h4>Florian<br />florian@gmail.com<br />0699999999</h4>
+								<p>14h - 15h | 2022-08-26</p>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div class="contenu messagerie">
+					<h3>Messagerie</h3>
+
+					<input type="search" placeholder="Écrivez un prénom..." />
+
+					<div>
+						<section class="sixieme">
+							<article>
+								<div>
+									<h3 class="prenom">Laurine</h3>
+								</div>
+
+								<div>
+									<div class="desti2">
+										<h4>Laurine</h4>
+										<p class="message tattoo">Salut, voilà mon idée !</p>
+									</div>
+
+									<div class="desti2">
+										<h4>Laurine</h4>
+										<img src="images/montagnes.jpg" style="width: 150px;height: 180px;">
+									</div>
+
+									<div class="desti1">
+										<h4>Erica</h4>
+										<p class="message tattoo">Merci, je m'en occupe !</p>
+									</div>
+
+									<div class="desti2">
+										<h4>Laurine</h4>
+										<p class="message tattoo">D'accord, à bientôt !</p>
+									</div>
+								</div>
+
+								<form class="envoie" enctype="multipart/form-data" method="POST">
+									<textarea name="message" placeholder= "Ecrivez votre message..."></textarea>
+
+									<input type="hidden" name="origine" value="/Polaire-Studio/profil_tatoueur.php" />
+									<input type="hidden" name="cible" value="15" />
+
+									<label>
+										<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
+										<input name="userfile3" type="file" style=" display: none; visibility: none;" />
+									</label>
+
+									<button type="submit" class="comment_m"><i class="fa-solid fa-location-arrow"></i></button>
+								</form>
+							</article>
+						</section>
+
+						<section class="sixieme">
+							<article>
+								<div>
+									<h3 class="prenom">Blake</h3>
+								</div>
+
+								<div>
+									<div class="desti2">
+										<h4>Blake</h4>
+										<p class="message tattoo">Bonjour, comment allez-vous ?</p>
+									</div>
+
+									<div class="desti1">
+										<h4>Erica</h4>
+										<p class="message tattoo">Bien et vous ?</p>
+									</div>
+
+									<div class="desti2">
+										<h4>Blake</h4>
+										<p class="message tattoo">Parfaitement bien !</p>
+									</div>
+								</div>
+
+								<form class="envoie" enctype="multipart/form-data" action="php/messagerie_action.php" method="POST">
+									<textarea name="message" placeholder= "Ecrivez votre message..."></textarea>
+
+									<input type="hidden" name="origine" value="/Polaire-Studio/profil_tatoueur.php" />
+									<input type="hidden" name="cible" value="30" />
+
+									<label>
+										<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
+										<input name="userfile3" type="file" style=" display: none; visibility: none;" />
+									</label>
+
+									<button type="submit" class="comment_m"><i class="fa-solid fa-location-arrow"></i></button>
+								</form>
+							</article>
+						</section>
+					</div>
+				</div>
+
+				<div class="contenu prl">
+					<h3>Mon profil</h3>
+
+					<!-- FONCTIONNALITÉ : Création du profil -->
+					<form enctype="multipart/form-data" method="POST">
+						<p>Changer le style de la bordure</p>
+
+						<ul class="borde">
+							<li>
+								<input type="radio" id="pointe" name="border" value="point" checked>
+								<label>bordure rectangulaire</label>
+							</li>
+
+							<li>
+								<input type="radio" id="rond" name="border" value="ron"  >
+								<label>bordure arrondis</label>
+							</li>
+						</ul>
+
+						<p>Changer la couleur de fond</p>
+
+						<input type="color" name="background" id="background" value="#3453b2" />
+
+						<div>
+							<p>Votre photo de profil</p>
+							<input type="file" id="userfile1" name="userfile1">
+						</div>
+
+						<div>
+							<p>Prénom</p>
+
+							<input type="text" name="prenom" class="champs" id="register_prenom" autocomplete="false" placeholder="prénom..." value="Erica" />
+							<input type="color" name="text_color" id="text_color" value="#a7d5ec" />
+
+							<ul>
+								<li>
+									<input type="radio" id="Poppins" name="font" value="Poppins">
+									<label>Poppins</label>
+								</li>
+
+								<li>
+									<input type="radio" id="Nothing" name="font" value="Nothing You Could Do" checked>
+									<label>Nothing You Could Do</label>
+								</li>
+
+								<li>
+									<input type="radio" id="Bebas" name="font" value="Bebas Neue">
+									<label>Bebas Neue</label>
+								</li>
+
+								<li>
+									<input type="radio" id="Shadows" name="font" value="Shadows Into Light">
+									<label>Shadows Into Light</label>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<p>Style</p>
+
+							<ul>
+								<li>
+									<input type="checkbox" id="Japonais" name="style[]" value="Japonais">
+									<label>Japonais</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="Animé" name="style[]" value="Animé">
+									<label>Animé</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="OldSchool" name="style[]" value="OldSchool" checked>
+									<label>Old school</label>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<p>Couleur</p>
+
+							<ul>
+								<li>
+									<input type="checkbox" id="Couleurs" name="couleur[]" value="Couleurs">
+									<label>Couleurs</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="NoirEtBlanc" name="couleur[]" value="NoirEtBlanc" checked>
+									<label>Noir et Blanc</label>
+								</li>
+							</ul>
+						</div>
+
+						<div>
+							<p>Taille</p>
+
+							<ul>
+								<li>
+									<input type="checkbox" id="Petit" name="taille[]" value="Petit">
+									<label>Petit (10 - 20cm)</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="Moyen" name="taille[]" value="Moyen">
+									<label>Moyen (20 - 30cm)</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="Grand" name="taille[]" value="Grand" checked>
+									<label>Grand (30 - 40cm)</label>
+								</li>
+
+								<li>
+									<input type="checkbox" id="Plus" name="taille[]" value="Plus" checked>
+									<label>Plus (40cm - et plus)</label>
+								</li>
+							</ul>
+						</div>
+
+						<div class="reseaux">
+							<p>Réseaux sociaux</p>
+
+							<div>
+								<input type="text" name="reseau1" class="champs" id="register_style" placeholder="..." value="http://localhost/projet_ferreira/profil_tatoueur.php" />
+								<i class="fa-brands fa-instagram"></i>
+							</div>
+
+							<div>
+								<input type="text" name="reseau2" class="champs" id="register_style" placeholder="..." value="http://localhost/projet_ferreira/profil_tatoueur.php" />
+								<i class="fa-brands fa-facebook"></i>
+							</div>
+						</div>
+
+						<div>
+							<p>Vos réalisations</p>
+							<input type="file" id="userfile2" name="realisations[]" multiple>
+							<input type="color" name="button_color" id="button" value="#a1c6dd"/>
+						</div>
+
+						<div class="publier">
+							<input type="hidden" name="id_utilisateur" value="29">
+							<input type="hidden" name="id_profil" value="14">
+
+							<button type="submit" name="submit">Mettre à jour</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

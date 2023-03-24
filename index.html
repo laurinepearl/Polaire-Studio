@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="scss/index/index.css" />
+		<link rel="stylesheet" href="scss/reset.css">
+
+		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+		<script src="js/script.js" defer></script>
+		<script src="js/index.js" defer></script>
+
+		<title>Polaire Studio</title>
+	</head>
+	<body>
+		<header class="header">
+			<a href="index.html" class="logo">
+				<img src="images/logo/logo_h.svg">
+			</a>
+
+			<a href="index.html">
+				<img class="logo2" src="images/logo/logo_2emeformat.svg">
+			</a>
+
+			<nav class="navbar">
+				<ul class="navbar__link">
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- lors de la connexion cela permet d'afficher le dashboard du client concerné -->
+			<div class="icons">
+				<button class="btn" id="displayform">
+					<i class="fa-solid fa-user"></i>
+				</button>
+
+				<!-- avec "role" la bdd vérifie si la personne connecté est un tatoueur ou un client
+				mais lors de l'inscription le "role" est définis par défaut en "client"
+				pour le définir en "tatoueur" il faut le faire manuellement dans la base de donnée -->
+				<ul>
+					<li id="lg">Langues
+						<ul class="deux">
+							<li class="francais"><a href="">Français</a></li>
+							<li class="anglais"><a href="">Anglais</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="fas fa-bars" id="menu-btn"></div>
+			</div>
+		</header>
+
+		<section id="co">
+			<div class="formContainer">
+				<div class="form-wrapper">
+					<div class="card">
+						<button class="btn" id="hideform">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+
+						<div class="card-header">
+							<div id="forLogin" class="form-header">Se connecter</div>
+							<div id="forRegister" class="form-header">S'inscrire</div>
+						</div>
+
+						<div class="card-body" id="formContainer">
+							<form id="loginForm" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<input type="email" name="Email" class="champs" id="login_email" placeholder="email" autocomplete="off" />
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Mot de passe -->
+								<input type="password" name="password" class="champs" id="login_password" placeholder="mot de passe" autocomplete="off" />
+								<i class="fa-solid fa-eye-slash eye"></i>
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Oubli du mot de passe -->
+								<a href="#" id="mdpforget" class="link">Mot de passe oublié ?</a><br>
+
+								<button class="formButton">Connexion</button>
+							</form>
+
+							<form id="registerForm" class="toggleform" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<div class="form-control">
+									<input type="email" name="Email" class="champs" id="register_email" placeholder="email" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div class="form-control">
+									<input type="texte" name="prenom" class="champs" id="register_prenom" placeholder="prénom" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<!-- Mot de passe (première étape) -->
+								<div class="form-control">
+									<input type="password" name="password" class="champs" id="register_password" placeholder="mot de passe" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<!-- Mot de passe (confirmation) -->
+								<div class="form-control">
+									<input type="password" name="password2" class="champs"  id="register_confirmation" placeholder="Confirmer Mot de passe" autocomplete="off" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div>
+									<input type="checkbox" id="conditions" name="conditions" value="">
+									<label id="conditions1">J'ai lu et accepté les <a href="conditions_generales.html">conditions générales d'utilisation</a></label>
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<button class="formButton">Inscription</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="premiere">
+			<h2>Salon de Tatouage</h2>
+
+			<h3>Faites de votre peau une œuvre d&#039;art.</h3>
+
+			<img src="images/accueil/photo_accueil.png" />
+
+			<img src="images/accueil/photo_accueil2.png" />
+
+			<img src="images/accueil/photo_accueil4.png" />
+		</section>
+
+		<div class="parallax">
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+			<img src="images/accueil/test.png" />
+			<img src="images/accueil/test2.png" />
+			<img src="images/accueil/test3.png" />
+		</div>
+	</body>
+</html>

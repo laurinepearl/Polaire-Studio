@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="scss/tatouage/tatouage.css" />
+		<link rel="stylesheet" href="scss/reset.css">
+
+		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+		<script src="js/script.js" defer></script>
+		<script src="js/filter.js" defer ></script>
+
+		<title>Polaire Studio</title>
+	</head>
+	<body>
+		<header class="header">
+			<a href="index.html" class="logo">
+				<img src="images/logo/logo_h.svg">
+			</a>
+
+			<a href="index.html">
+				<img class="logo2" src="images/logo/logo_2emeformat.svg">
+			</a>
+
+			<nav class="navbar">
+				<ul class="navbar__link">
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- lors de la connexion cela permet d'afficher le dashboard du client concerné -->
+			<div class="icons">
+				<button class="btn" id="displayform">
+					<i class="fa-solid fa-user"></i>
+				</button>
+
+				<!-- avec "role" la bdd vérifie si la personne connecté est un tatoueur ou un client
+				mais lors de l'inscription le "role" est définis par défaut en "client"
+				pour le définir en "tatoueur" il faut le faire manuellement dans la base de donnée -->
+				<ul>
+					<li id="lg">Langues
+						<ul class="deux">
+							<li class="francais"><a href="">Français</a></li>
+							<li class="anglais"><a href="">Anglais</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="fas fa-bars" id="menu-btn"></div>
+			</div>
+		</header>
+
+		<section id="co">
+			<div class="formContainer">
+				<div class="form-wrapper">
+					<div class="card">
+						<button class="btn" id="hideform">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+
+						<div class="card-header">
+							<div id="forLogin" class="form-header">Se connecter</div>
+							<div id="forRegister" class="form-header">S'inscrire</div>
+						</div>
+
+						<div class="card-body" id="formContainer">
+							<form id="loginForm" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<input type="email" name="Email" class="champs" id="login_email" placeholder="email" autocomplete="off" />
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Mot de passe -->
+								<input type="password" name="password" class="champs" id="login_password" placeholder="mot de passe" autocomplete="off" />
+								<i class="fa-solid fa-eye-slash eye"></i>
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Oubli du mot de passe -->
+								<a href="#" id="mdpforget" class="link">Mot de passe oublié ?</a><br>
+
+								<button class="formButton">Connexion</button>
+							</form>
+
+							<form id="registerForm" class="toggleform" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<div class="form-control">
+									<input type="email" name="Email" class="champs" id="register_email" placeholder="email" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div class="form-control">
+									<input type="texte" name="prenom" class="champs" id="register_prenom" placeholder="prénom" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<!-- Mot de passe (première étape) -->
+								<div class="form-control">
+									<input type="password" name="password" class="champs" id="register_password" placeholder="mot de passe" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<!-- Mot de passe (confirmation) -->
+								<div class="form-control">
+									<input type="password" name="password2" class="champs"  id="register_confirmation" placeholder="Confirmer Mot de passe" autocomplete="off" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div>
+									<input type="checkbox" id="conditions" name="conditions" value="">
+									<label id="conditions1">J'ai lu et accepté les <a href="conditions_generales.html">conditions générales d'utilisation</a></label>
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<button class="formButton">Inscription</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="premiere">
+			<h1>Tatoueurs</h1>
+
+			<h2 class="team">Notre Équipe</h2>
+
+			<button type="button" id="button-filter" onclick="myFunction()"><img src="images/filter.png" id="img-filter" height ="23" width="26" /></button>
+
+			<article class="filter">
+				<div id="myBtnContainer">
+					<button class="btn active" onclick="filterSelection('all')">Tout afficher</button>
+					<button class="btn" onclick="filterSelection('style')">Style</button>
+					<button class="btn" onclick="filterSelection('color')">Couleurs</button>
+					<button class="btn" onclick="filterSelection('taille')">Taille</button>
+					<!-- <button class="btn" onclick="filterSelection('colors')">Colors</button>-->
+				</div>
+
+				<div class="container">
+					<div class="filterDiv style">
+						<input type="checkbox" value="Japonais"><label>Japonais</label>
+					</div>
+
+					<div class="filterDiv style">
+						<input type="checkbox" value="Animé"><label>Animé</label>
+					</div>
+
+					<div class="filterDiv style">
+						<input type="checkbox" value="OldSchool"><label>Old School</label>
+					</div>
+
+					<div class="filterDiv color">
+						<input type="checkbox" value="Couleurs"><label>Couleurs</label>
+					</div>
+
+					<div class="filterDiv color">
+						<input type="checkbox" value="NoirEtBlanc"><label>Noir et Blanc</label>
+					</div>
+
+					<div class="filterDiv taille">
+						<input type="checkbox" value="Petit"><label>Petit (10 - 20cm)</label>
+					</div>
+
+					<div class="filterDiv taille">
+						<input type="checkbox" value="Moyen"><label>Moyen (20 - 30cm)</label>
+					</div>
+
+					<div class="filterDiv taille">
+						<input type="checkbox" value="Grand"><label>Grand (30 - 40cm)</label>
+					</div>
+
+					<div class="filterDiv taille">
+						<input type="checkbox" value="Plus"><label>Plus (40cm - et plus)</label>
+					</div>
+				</div>
+
+				<button type="submit" name="submit" class="result">VOIR RÉSULTATS</button>
+
+				<h3 class="pasresultat" style="display: none">Aucun résultat</h3>
+			</article>
+
+			<article id="carte" data-style="OldSchool" data-couleur="NoirEtBlanc" data-taille="Grand,Plus" style="background-color: #3453b2; border-radius:none">
+				<img src="images/photo_profil/fille.jpeg">
+
+				<h2 style="color: #a7d5ec; font-family: Nothing You Could Do">Erica</h2>
+
+				<h3>OldSchool</h3>
+
+				<a class="button" href="realisations1.html" style="background-color: #a1c6dd"><span>Réalisations</span></a>
+
+				<br />
+
+				<a class="media" href="http://localhost/projet_ferreira/profil_tatoueur.html" target="_blank">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+
+				<a class="media" href="http://localhost/projet_ferreira/profil_tatoueur.html " target="_blank">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+			</article>
+
+			<article id="carte" data-style="Animé" data-couleur="Couleurs" data-taille="Moyen" style="background-color: #fea9d2; border-radius:30px">
+				<img src="images/photo_profil/fille2.jpeg">
+
+				<h2 style="color: #ff1a88; font-family: Shadows Into Light">pearl</h2>
+				<h3>Animé</h3>
+
+				<a class="button" href="realisations2.html" style="background-color: #ff2e89"><span>Réalisations</span></a>
+
+				<br />
+
+				<a class="media" href="http://localhost/projet_ferreira/profil_tatoueur.html" target="_blank">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+
+				<a class="media" href="http://localhost/projet_ferreira/profil_tatoueur.html " target="_blank">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+			</article>
+		</section>
+
+		<section class="troisieme">
+			<article class="social">
+				<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+
+				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
+					<i class="fa-brands fa-pinterest"></i>
+				</a>
+
+				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+			</article>
+		</section>
+
+		<section class="sixieme">
+			<article>
+				<div>
+					<button type="button" class="fleche"><i class="fa-solid fa-arrow-left"></i></button>
+					<h3>Polaire Studio<h3>
+				</div>
+
+				<div></div>
+
+				<form class="envoie" enctype="multipart/form-data" method="POST">
+					<textarea name="message"  placeholder= "Ecrivez votre message..."></textarea>
+					<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
+
+					<label>
+						<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
+						<input name="userfile3" type="file" style=" display: none; visibility: none;">
+					</label>
+
+					<button type="submit" class="comment_m"><i class="fa-solid fa-location-arrow"></i></button>
+				</form>
+			</article>
+		</section>
+
+		<button type="button" id="messagerie">
+			<i class="fa-solid fa-comment-dots"></i>
+			<span class="badge"></span>
+		</button>
+
+		<a id="remonter" href="#">
+			<i class="fas fa-chevron-up"></i>
+		</a>
+
+		<footer>
+			<section>
+				<img src="images/logo/logo.svg">
+
+				<br />
+
+				<article>
+					<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+
+					<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
+						<i class="fa-brands fa-pinterest"></i>
+					</a>
+
+					<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
+				</article>
+
+				<a class="contactezmoi"href="contact.html">Contactez-nous</a>
+
+				<br /><br /><br />
+
+				<a class="link" href="tel:0699999999">06.99.99.99.99</a>
+				<a href="https://www.google.com/maps/place/Nice/@43.703754,7.249808,14z/data=!4m5!3m4!1s0x12cdd0106a852d31:0x40819a5fd979a70!8m2!3d43.7101728!4d7.2619532?hl=fr" target="_blank">cliquer ici pour voir la localisation</a>
+			</section>
+
+			<section>
+				<ul>
+					<li><a href="index.html">Accueil</a></li>
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<p class="localisation">Localisation</p>
+				<p class="adresse">15 Avenue de la République - Nice, salon de tatouage.</p>
+
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16312.980261367158!2d7.2523735166151075!3d43.71564573783791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdd0106a852d31%3A0x40819a5fd979a70!2sNice!5e0!3m2!1sfr!2sfr!4v1645785592143!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</section>
+		</footer>
+	</body>
+</html>

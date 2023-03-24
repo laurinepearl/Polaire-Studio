@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="scss/profil/profil_utilisateur.css" />
+		<link rel="stylesheet" href="scss/reset.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" />
+
+		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+		<script src="js/script.js" defer></script>
+		<script src="js/profil.js" defer></script>
+
+		<title>Polaire Studio</title>
+	</head>
+	<body>
+		<header class="header">
+			<a href="index.html" class="logo">
+				<img src="images/logo/logo_h.svg">
+			</a>
+
+			<a href="index.html">
+				<img class="logo2" src="images/logo/logo_2emeformat.svg">
+			</a>
+
+			<nav class="navbar">
+				<ul class="navbar__link">
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- lors de la connexion cela permet d'afficher le dashboard du client concerné -->
+			<div class="icons">
+				<button class="btn" id="displayform">
+					<i class="fa-solid fa-user"></i>
+				</button>
+
+				<!-- avec "role" la bdd vérifie si la personne connecté est un tatoueur ou un client
+				mais lors de l'inscription le "role" est définis par défaut en "client"
+				pour le définir en "tatoueur" il faut le faire manuellement dans la base de donnée -->
+				<ul>
+					<li id="lg">Langues
+						<ul class="deux">
+							<li class="francais"><a href="">Français</a></li>
+							<li class="anglais"><a href="">Anglais</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="fas fa-bars" id="menu-btn"></div>
+			</div>
+		</header>
+
+		<div class="container">
+			<div class="identite">
+				<h2>Bonjour</h2>
+				<h3>Laurine</h3>
+			</div>
+
+			<div class="container-onglets">
+				<div class="onglets">
+					<i class="fa-solid fa-calendar-days"></i>
+					<span>Rendez-vous</span>
+				</div>
+
+				<div class="onglets">
+					<i class="fa-solid fa-comment"></i>
+					<span>Vos Commentaires</span>
+				</div>
+
+				<div class="onglets">
+					<i class="fa-regular fa-lightbulb"></i>
+					<span>Vos Idées</span>
+				</div>
+
+				<form method="POST">
+					<div class="suppression" onclick="if(!confirm('Voulez-vous vraiment supprimer ce compte ?')) return false; else this.parentNode.submit()">
+						<i class="fa-solid fa-trash-can"></i>
+						<input name="suppression" type="submit"  value="Supprimer" />
+					</div>
+				</form>
+
+				<form method="POST">
+					<div class="deconnexion" onclick="if(!confirm('Voulez-vous vraiment vous déconnecter ?')) return false; else this.parentNode.submit()">
+						<i class="fa-solid fa-power-off"></i>
+						<input name="deconnexion" type="submit"  value="Déconnexion" />
+					</div>
+				</form>
+			</div>
+
+			<div class="container-body">
+				<div class="illus">
+					<img src="images/humaans2.png" />
+					<p>Cliquez sur l'un des onglets</p>
+				</div>
+
+				<div class="contenu rdv">
+					<h3>Rendez-vous</h3>
+
+					<article class="recap">
+						<h4>Prochain Rendez-vous</h4>
+
+						<div class="recap_entier">
+							<h4>Polaire Studio</h4>
+
+							<p>15 Avenue de la République - Nice, salon de tatouage. </p>
+
+							<div class="client">
+								<h4>Laurine<br />laurine@gmail.com<br />0699999999</h4>
+								<p>10h - 11h | 2022-08-26</p>
+							</div>
+						</div>
+					</article>
+				</div>
+
+				<div class="contenu com">
+					<h3>Vos commentaires</h3>
+
+					<section class="cinquieme">
+						<article>
+							<h3> Polaire Studio</h3>
+
+							<span></span>
+
+							<div class ="moyenne">
+								<span>3</span>
+
+								<ul>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-solid fa-star"></i></li>
+									<li><i class="fa-regular fa-star"></i></li>
+									<li><i class="fa-regular fa-star"></i></li>
+								</ul>
+
+								<p>1</p>
+
+								<span>Avis</span>
+							</div>
+
+							<div>
+								<div>
+									<h4>Laurine</h4>
+
+									<ul>
+										<li><i class="fa-solid fa-star"></i></li>
+										<li><i class="fa-solid fa-star"></i></li>
+										<li><i class="fa-solid fa-star"></i></li>
+										<li><i class="fa-regular fa-star"></i></li>
+										<li><i class="fa-regular fa-star"></i></li>
+									</ul>
+
+									<p>Très belle ambiance...</p>
+
+									<div class="date">
+										<span class="mois">Juin</span>
+										<span>2022</span>
+									</div>
+
+									<img id="profile" src="php/upload/commentaires/1.jpg" />
+								</div>
+							</div>
+						</article>
+					</section>
+				</div>
+
+				<div class="contenu idee">
+					<h3>Vos Idées</h3>
+
+					<form class="idees" enctype="multipart/form-data" method="POST">
+						<input type="hidden" name="origine" value="/Polaire-Studio/profil_utilisateur.php" />
+						<input id="idee" name="realisations[]" type="file" multiple />
+						<button type="submit" name="submit">Publier</button>
+					</form>
+
+					<section id="galerie">
+						<article class="row">
+							<div class="column">
+								<img src="php/upload/idees/15/879495691.jpeg"></img>
+							</div>
+						</article>
+					</section>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

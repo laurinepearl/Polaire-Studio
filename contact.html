@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="scss/contact/contact.css" />
+		<link rel="stylesheet" href="scss/reset.css">
+
+		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+		<script src="js/script.js" defer></script>
+		<script src="js/contact.js" defer></script>
+
+		<title>Polaire Studio</title>
+	</head>
+	<body>
+		<header class="header">
+			<a href="index.html" class="logo">
+				<img src="images/logo/logo_h.svg">
+			</a>
+
+			<a href="index.html">
+				<img class="logo2" src="images/logo/logo_2emeformat.svg">
+			</a>
+
+			<nav class="navbar">
+				<ul class="navbar__link">
+					<li><a href="apropos.html">À propos</a></li>
+					<li><a href="tatouages.html">Tatoueurs</a></li>
+					<li><a href="rendezvous.html">Réservation</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- lors de la connexion cela permet d'afficher le dashboard du client concerné -->
+			<div class="icons">
+				<button class="btn" id="displayform">
+					<i class="fa-solid fa-user"></i>
+				</button>
+
+				<!-- avec "role" la bdd vérifie si la personne connecté est un tatoueur ou un client
+				mais lors de l'inscription le "role" est définis par défaut en "client"
+				pour le définir en "tatoueur" il faut le faire manuellement dans la base de donnée -->
+				<ul>
+					<li id="lg">Langues
+						<ul class="deux">
+							<li class="francais"><a href="">Français</a></li>
+							<li class="anglais"><a href="">Anglais</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<div class="fas fa-bars" id="menu-btn"></div>
+			</div>
+		</header>
+
+		<section id="co">
+			<div class="formContainer">
+				<div class="form-wrapper">
+					<div class="card">
+						<button class="btn" id="hideform">
+							<i class="fa-solid fa-xmark"></i>
+						</button>
+
+						<div class="card-header">
+							<div id="forLogin" class="form-header">Se connecter</div>
+							<div id="forRegister" class="form-header">S'inscrire</div>
+						</div>
+
+						<div class="card-body" id="formContainer">
+							<form id="loginForm" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<input type="email" name="Email" class="champs" id="login_email" placeholder="email" autocomplete="off" />
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Mot de passe -->
+								<input type="password" name="password" class="champs" id="login_password" placeholder="mot de passe" autocomplete="off" />
+								<i class="fa-solid fa-eye-slash eye"></i>
+
+								<i class="fas fa-check-circle"></i>
+								<i class="fas fa-exclamation-circle"></i>
+								<small>Error message</small>
+
+								<!-- Oubli du mot de passe -->
+								<a href="#" id="mdpforget" class="link">Mot de passe oublié ?</a><br>
+
+								<button class="formButton">Connexion</button>
+							</form>
+
+							<form id="registerForm" class="toggleform" method="POST" novalidate>
+								<!-- Adresse électronique -->
+								<div class="form-control">
+									<input type="email" name="Email" class="champs" id="register_email" placeholder="email" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div class="form-control">
+									<input type="texte" name="prenom" class="champs" id="register_prenom" placeholder="prénom" />
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<!-- Mot de passe (première étape) -->
+								<div class="form-control">
+									<input type="password" name="password" class="champs" id="register_password" placeholder="mot de passe" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<!-- Mot de passe (confirmation) -->
+								<div class="form-control">
+									<input type="password" name="password2" class="champs"  id="register_confirmation" placeholder="Confirmer Mot de passe" autocomplete="off" />
+									<i class="fa-solid fa-eye-slash eye"></i>
+
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<div>
+									<input type="checkbox" id="conditions" name="conditions" value="">
+									<label id="conditions1">J'ai lu et accepté les <a href="conditions_generales.html">conditions générales d'utilisation</a></label>
+									<i class="fas fa-check-circle"></i>
+									<i class="fas fa-exclamation-circle"></i>
+									<small>Error message</small>
+								</div>
+
+								<br />
+
+								<button class="formButton">Inscription</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="premiere">
+			<h1>Contactez-nous</h1>
+
+			<article>
+				<p class ="a">
+					Vous avez des questions à nous poser, veuillez nous contacter via ce formulaire.
+   					Nous vous répondrons avec plaisir.
+				</p>
+
+				<div>
+					<p class="adresse">15 Avenue de la République - Nice</p>
+					<a href="tel:0699999999">06.99.99.99.99</a>
+				</div>
+			</article>
+		</section>
+
+		<section class="formulaire">
+			<img src="images/sapin.jfif">
+
+			<form class="contact" method="POST">
+				<input class="contaact" type="text" name="nom"  placeholder="Nom" required>
+				<input class="contaact" type="text" name="prenom"  placeholder="Prénom" required>
+				<input class="contaact" type="email" name="email"  placeholder="Email" required>
+				<input class="contaact" type="tel" name="tel"  placeholder="n° téléphone" required>
+
+				<textarea name="message" placeholder= "Votre Message" required></textarea>
+
+				<button type="submit">Envoyer</button>
+			</form>
+		</section>
+
+		<section class="troisieme">
+			<article class="social">
+				<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
+					<i class="fa-brands fa-instagram"></i>
+				</a>
+
+				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
+					<i class="fa-brands fa-pinterest"></i>
+				</a>
+
+				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
+			</article>
+		</section>
+
+		<section class="sixieme">
+			<article>
+				<div>
+					<button type="button" class="fleche"><i class="fa-solid fa-arrow-left"></i></button>
+					<h3>Polaire Studio<h3>
+				</div>
+
+				<div></div>
+
+				<form class="envoie" enctype="multipart/form-data" method="POST">
+					<textarea name="message"  placeholder= "Ecrivez votre message..."></textarea>
+					<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
+
+					<label>
+						<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
+						<input name="userfile3" type="file" style=" display: none; visibility: none;">
+					</label>
+
+					<button type="submit" class="comment_m"><i class="fa-solid fa-location-arrow"></i></button>
+				</form>
+			</article>
+		</section>
+
+		<button type="button" id="messagerie">
+			<i class="fa-solid fa-comment-dots"></i>
+			<span class="badge"></span>
+		</button>
+
+		<a id="remonter" href="#">
+			<i class="fas fa-chevron-up"></i>
+		</a>
+
+		<footer>
+			<section>
+				<img src="images/logo/logo.svg">
+
+				<br />
+
+				<article>
+					<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+
+					<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
+						<i class="fa-brands fa-pinterest"></i>
+					</a>
+
+					<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
+				</article>
+
+				<a class="contactezmoi" href="contact.php">Contactez-nous</a>
+
+				<br /><br /><br />
+
+				<a class="link" href="tel:0699999999">06.99.99.99.99</a>
+				<a href="https://www.google.com/maps/place/Nice/@43.703754,7.249808,14z/data=!4m5!3m4!1s0x12cdd0106a852d31:0x40819a5fd979a70!8m2!3d43.7101728!4d7.2619532?hl=fr" target="_blank">cliquer ici pour voir la localisation</a>
+			</section>
+
+			<section>
+				<ul>
+					<li><a href="index.php">Accueil</a></li>
+					<li><a href="apropos.php">À propos</a></li>
+					<li><a href="tatouages.php">Tatoueurs</a></li>
+					<li><a href="rendezvous.php">Réservation</a></li>
+					<li><a href="contact.php">Contact</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<p class="localisation">Localisation</p>
+				<p class="adresse">15 Avenue de la République - Nice, salon de tatouage.</p>
+
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16312.980261367158!2d7.2523735166151075!3d43.71564573783791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdd0106a852d31%3A0x40819a5fd979a70!2sNice!5e0!3m2!1sfr!2sfr!4v1645785592143!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</section>
+		</footer>
+	</body>
+</html>
