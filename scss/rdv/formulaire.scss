@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap');
+@import "../variable";
+@import "../templates";
+
+:root{
+    --main-color:#000000;
+    --black:#000000;
+    --bg:#ffffff;
+    --border:.1rem solid rgba(255,255,255,.3);
+}
+
+
+
+/* BOUTON POUR REVENIR EN HAUT DE LA PAGE */
+html{
+    scroll-behavior: smooth;
+}
+
+// body{
+//     background: var(--bg);
+// }
+
+
+
+.header
+{
+    @extend %header;
+}
+
+// Pied de page général.
+footer{
+     @extend %footer;
+}
+
+#co
+{
+    @extend %formulaire;
+}
+
+ /* BOUTON POUR REMONTER EN HAUT DE LA PAGE */
+ #remonter {
+    display: none;
+    position: fixed;
+    width:37px;
+    height: 37px;
+    background-color: $color3;
+    border-radius: 25px;
+    bottom: 10px;
+    right:12px;
+    text-align: center;
+    line-height: 42px;
+    z-index: 2;
+
+
+    i{
+    color:white;
+    font-size:20px;
+    }
+
+    .remonter:hover{
+        background-color: $color2;
+    }
+}
+
+
+
+
+
+    .formulaire{
+        position: relative;
+        margin: 11vh auto 0 auto;
+    article{
+        display: flex;
+         margin-bottom: -84px;
+
+        .image{
+            width: 405px;
+            height: 600px;
+            border-right: 2px solid;
+    
+            }
+    
+        .form{
+            position: absolute;
+            left: 85vh;
+            top: 35px;
+
+
+            h1{
+                font-size: 2.2em;
+                font-family: "Nothing You Could Do";
+                font-weight: 500;
+                margin-left: -74px;
+                margin-bottom: 85px;
+            }
+            form {
+                width: 53%;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: center;
+
+                div {
+                    margin-bottom: 25px;
+                    font-size: 1.2em;
+                    color: #ffffff;
+                    background-color: #003566;
+                    padding: 10px;
+                    border-radius: 10px;
+                    text-align: center;
+                    font-family: "Poppins";
+                }
+
+                .contaact {
+                    margin-bottom: 20px;
+                    font-size: 1.2em;
+                    padding: 8px;
+                
+                }
+
+                button{
+                    display: block;
+                    margin-top: 20px;
+                    font-size: 1.2em;
+                    color: #ffffff;
+                    background-color: #003566;
+                    border-radius:10px;
+                    border: none;
+                    padding: 10px 20px 10px 20px;
+
+                    &:hover{
+                        background-color: #00203e;
+                    }
+                }
+                
+    
+        }
+        }
+    
+    }}
