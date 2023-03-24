@@ -1,25 +1,3 @@
-// Affiche l'image en overlay.
-const text = $( "#caption" );
-const modal = $( "#myModal" );
-const image = $( "#img01" );
-const gallery = $( ".myImg" );
-
-gallery.click( function ()
-{
-	modal.css( "display", "flex" );
-
-	image.attr( "src", $( this ).attr( "src" ) );
-
-	text.html( $( this ).attr( "alt" ) );
-} );
-
-// Bouton de fermeture de l'image.
-$( ".close" ).click( function ()
-{
-	modal.hide();
-} );
-
-
 // Bouton de publication.
 const quatrieme = $( ".quatrieme" );
 const cinquieme = $( ".cinquieme" );
@@ -56,3 +34,45 @@ $( ".form_co" ).click( function ( event )
 	event.preventDefault();
 	showForm();
 } );
+
+
+// Open the Modal
+function openModal() {
+	document.getElementById("myModal").style.display = "block";
+  }
+  
+  // Close the Modal
+  function closeModal() {
+	document.getElementById("myModal").style.display = "none";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  // Next/previous controls
+  function plusSlides(n) {
+	showSlides(slideIndex += n);
+  }
+  
+  // Thumbnail image controls
+  function currentSlide(n) {
+	showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+	var i;
+	var slides = document.getElementsByClassName("mySlides");
+	var dots = document.getElementsByClassName("demo");
+	var captionText = document.getElementById("caption");
+	if (n > slides.length) {slideIndex = 1}
+	if (n < 1) {slideIndex = slides.length}
+	for (i = 0; i < slides.length; i++) {
+	  slides[i].style.display = "none";
+	}
+	for (i = 0; i < dots.length; i++) {
+	  dots[i].className = dots[i].className.replace(" active", "");
+	}
+	slides[slideIndex-1].style.display = "block";
+	dots[slideIndex-1].className += " active";
+	captionText.innerHTML = dots[slideIndex-1].alt;
+  }

@@ -67,10 +67,11 @@ forRegister.click( function ()
 } );
 
 // Pour afficher/disparaître l'effet d'overlay des formulaires précédents.
-function showForm()
+function showForm(event)
 {
-	const card = $( ".form-wrapper .card" );
+	event.preventDefault();
 
+	const card = $( ".form-wrapper .card" );
 	card.toggleClass( "show" );
 
 	const state = card.hasClass( "show" );
@@ -79,8 +80,7 @@ function showForm()
 	$( "html, body" ).animate( { scrollTop: 0 }, 100 );
 }
 
-$( "#displayform" ).click( showForm );
-$( "#hideform" ).click( showForm );
+$( "#displayform, .form_co, #hideform, [data-login = true]" ).click( showForm );
 
 // Validations JavaScript des formulaires.
 const form = $( "#registerForm" );
@@ -279,23 +279,36 @@ setTimeout( function ()
 }, 3000 );
 
 // Bouton de publication.
-const sixieme = $( ".sixieme" );
-
-$( "#messagerie" ).click( function ()
+$(document).on( "click", "#messagerie", function ()
 {
 	// apparition.
-	sixieme.fadeIn( 300 );
+	if ($( ".sixieme" ).is(":visible")) {
+		$( ".sixieme" ).fadeOut( 300 );
+	} else {
+		$( ".sixieme" ).fadeIn( 300 );
+		$(".badge").hide();
+
+		messages += Number($(".badge").first().text());
+		localStorage.setItem('messages', messages);
+	}
 } );
 
-$( ".fleche" ).click( function ()
+$(".container-onglets .onglets:nth-child(2)").click(function(){
+	$(".badge").hide();
+
+	messages += Number($(".badge").first().text());
+	localStorage.setItem('messages', messages);
+})
+
+$(document).on( "click", ".fleche", function ()
 {
 	// disparition.
-	sixieme.fadeOut( 300 );
+	$( ".sixieme" ).fadeOut( 300 );
 } );
 
 
 //bouton entrer pour la messagerie
-$( "textarea[name = message]" ).keydown( function ( event )
+$(document).on("keydown", "textarea[name = message]", function ( event )
 {
 	if ( event.keyCode == 13 )
 	{
@@ -313,5 +326,67 @@ setTimeout( function ()
 // Apparition automatique messagerie après envoi message.
 if ( window.location.href.includes( "?success=1" ) )
 {
-	sixieme.fadeIn( 300 );
+	$( ".sixieme" ).fadeIn( 300 );
 }
+
+// Notifications
+let messages = 0
+
+$.post( "php/notifications.php", function( data ) {
+	if (data != "") {
+		const json = JSON.parse(data)
+		const count = Number(localStorage.getItem('messages'))
+
+		if (json.length > count && count > 0){
+			messages = count
+		} else {
+			messages = json.length
+		}
+
+		localStorage.setItem('messages', messages);
+	}
+
+	notif()
+});
+
+function notif() {
+	$.post( "php/notifications.php", function( data ) {
+		if (data != "") {
+			const json = JSON.parse(data)
+			if (messages > json.length) {
+				messages = json.length
+			}
+
+			if (json.length != messages){
+
+				if (window.location.pathname.search("profil_tatoueur.php") > 0){
+					$.post( "dashboard.php", { origine: window.location.pathname }, function( data ) {
+						$(".sixieme").remove();
+						$(".messagerie > div").append(data)
+
+						$(".badge").text(json.length - messages);
+						$(".badge").show();
+					})
+
+
+
+				} else {
+					$.post( "messagerie.php", { origine: window.location.pathname }, function( data ) {
+						$(".sixieme").remove();
+						$("#messagerie").remove();
+
+						$("body").append(data)
+
+						$(".badge").text(json.length - messages);
+						$(".badge").show();
+					})
+				}
+			}
+		}
+	});
+}
+
+setInterval(function () {
+
+	notif()
+}, 2000);
