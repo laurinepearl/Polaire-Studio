@@ -1,7 +1,0 @@
-# Fichiers composer
-composer.phar
-/vendor/
-
-# Fichiers CSS
-*.css
-*.css.map
