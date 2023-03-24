@@ -4,11 +4,11 @@
 		$host = 'localhost';
 		$db   = 'projet_ferreira';
 		$user = 'root';
-		$pass = 'root';
+		$pass = '';
 		$charset = 'utf8';
 
 
-		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+		$dsn = "mysql:host=$host;dbname=$db;charset=$charset;";
 		$options = [
 			PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
 			PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -21,7 +21,7 @@
 		}
 	}
 
-	function verifInfo($info, $length)
+	function verifInfo($info, $min, $max = 0)
 	{
 		// On rend affichable les caractères HTML.
 		$info = htmlentities($info);
@@ -32,7 +32,7 @@
 		// On vérifie la taille de la chaîne de caractères et
 		//  on vérifie si la chaîne contient uniquement des
 		//  caractères alphabétiques.
-		if (strlen($info) >= $length && ctype_print($info))
+		if (strlen($info) >= $min && ($max > 0 ? strlen($info) <= $max : true) && ctype_print($info))
 		{
 			return true;
 		}
@@ -142,10 +142,46 @@ function userMessage($pdo, $message, $id, $cible)
 	$query->execute([$message, $id, $cible]);
 }
 
-	//insérer le profil tatoueur
-	function userProfil($pdo, $name, $color, $font, $style, $reseau1, $reseau2, $background, $button, $id)
-	{
-		$query = $pdo->prepare("INSERT INTO `profil_tatoueur` (`prenom`, `couleur`, `font`,  `style`, `reseau1`, `reseau2`, `background_color`, `button_color`, `id_utilisateur` ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-		$query->execute([ $name, $color, $font, $style, $reseau1, $reseau2, $background, $button, $id]);
-	}
+//insérer le profil tatoueur
+function userProfil($pdo, $name, $color, $font, $style, $couleur, $taille, $reseau1, $reseau2, $background, $button, $border, $id)
+{
+	$query = $pdo->prepare("INSERT INTO `profil_tatoueur` (`prenom`, `couleur`, `font`,  `style`, `style_couleur`, `style_taille`, `reseau1`, `reseau2`, `background_color`, `button_color`, `border`, `id_utilisateur` ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+	$query->execute([ $name, $color, $font, $style, $couleur, $taille, $reseau1, $reseau2, $background, $button, $border, $id]);
+}
+
+function updateProfil($pdo, $name, $color, $font, $style, $couleur, $taille, $reseau1, $reseau2, $background, $button, $border, $id)
+{
+	$query = $pdo->prepare("UPDATE `profil_tatoueur` SET `prenom` = ?, `couleur` = ?, `font` = ?,  `style` = ?,  `style_couleur` = ?,  `style_taille` = ?, `reseau1` = ?, `reseau2` = ?, `background_color` = ?, `button_color` = ?, `border` = ? WHERE `id_utilisateur` = ? ");
+	$query->execute([ $name, $color, $font, $style, $couleur, $taille, $reseau1, $reseau2, $background, $button, $border, $id]);
+}
+
+function deleteprofil($pdo, $id_utilisateur)
+{
+	$query = $pdo->prepare("DELETE FROM `connexion` WHERE `id_utilisateur` = ?;");
+	$query->execute([$id_utilisateur]);
+
+	$query = $pdo->prepare("DELETE FROM `messagerie` WHERE `id_utilisateur` = ? OR `id_cible` = ?;");
+	$query->execute([$id_utilisateur, $id_utilisateur]);
+
+	$query = $pdo->prepare("DELETE FROM `profil_tatoueur` WHERE `id_utilisateur` = ?;");
+	$query->execute([$id_utilisateur]);
+
+}
+
+function updateHoraires($pdo, $id_utilisateur, $horaires)
+{
+	$horaires = json_encode($horaires);
+
+	$query = $pdo->prepare('
+		INSERT INTO `horaires` (id_utilisateur, debut_horaire, creneaux) VALUES(?, ?, ?)
+		ON DUPLICATE KEY UPDATE debut_horaire = ?, creneaux = ?
+	');
+	$query->execute([$id_utilisateur, time(), $horaires, time(), $horaires]);
+}
+
+// rendez-vous
+function ajoutRendezVous($pdo, $prenom, $nom, $email, $telephone, $horaires, $id_utilisateur, $id_tatoueur) {
+	$query = $pdo->prepare("INSERT INTO `rendez_vous` (`prenom`, `nom`, `email`,  `phone`, `horaires`, `id_utilisateur`, `id_tatoueur`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+	$query->execute([ $prenom, $nom, $email, $telephone, $horaires, $id_utilisateur, $id_tatoueur]);
+}
 ?>

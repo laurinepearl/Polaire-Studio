@@ -12,7 +12,17 @@
 
 	include("php/requete_index.php");
 
-	$pdo = getPDO();
+    $pdo = getPDO();
+
+
+    function clients ($pdo)
+    {
+        $resultat = $pdo->query ('SELECT `id_utilisateur` FROM `messagerie` GROUP BY `id_utilisateur` ORDER BY MAX(`id_message`)
+        DESC');
+		$resultat = $resultat->fetchAll();
+
+		return $resultat;
+    }
 
 	function message ($pdo, $id)
 	{
@@ -37,6 +47,13 @@
 
 		return $resultat["role"];
 	}
+	function getTatoueur ($pdo, $id)
+	{
+		$resultat = $pdo->query("SELECT * FROM `profil_tatoueur` WHERE `id_utilisateur` = '$id' ");
+		$resultat = $resultat->fetch();
+
+		return $resultat;
+	}
 
 	function sendimage($id)
 	{
@@ -53,14 +70,41 @@
 		return "";
 	}
 
+    $id = $_SESSION["identification"]["id_utilisateur"];
+    $html3 = "";
+    $clients = clients($pdo);
 
-	if (isset($_SESSION["identification"]["id_utilisateur"]))
-	{
-		$id = $_SESSION["identification"]["id_utilisateur"];
-		$messages = message($pdo, $id);
+    if ($_SESSION["identification"] && $_SESSION["identification"]["role"] == "tatoueur") {
+        $tatoueur = getTatoueur($pdo, $id);
+    }
 
-		$html2 = "";
-        foreach ($messages as $message)
+    foreach($clients as $client)
+    {
+        // On saute la création du message pour l'utilisateur connecté.
+        if ($client["id_utilisateur"] == $id)
+        {
+            continue;
+        }
+
+        $messages = message($pdo, $client["id_utilisateur"]);
+
+        // Si l'utilisateur du site n'a aucun message de créé.
+        if (count($messages) == 0)
+        {
+            continue;
+        }
+
+        // Si l'utilisateur est un tatoueur.
+        $role = role($pdo, $client ["id_utilisateur"]);
+
+        if ($role == "tatoueur")
+        {
+            continue;
+        }
+
+        $html2 = "";
+// FONCTIONNALITÉ : messagerie
+       	foreach ($messages as $message)
         {
             $role = role($pdo, $message ["id_utilisateur"]);
 
@@ -94,49 +138,31 @@
 
 			$html2 .= '</div>';
         }
-	}
-?>
 
-
-
-<?php if (isset($_SESSION['identification'])) : ?>
-		<section class="sixieme">
+       $html3.=' <section class="sixieme">
 			<article>
 				<div>
-					<button type="button" class="fleche"><i class="fa-solid fa-arrow-left"></i></button>
-					<h3> Polaire Studio </h3>
+					<h3 class="prenom">' . ucfirst(prenom2 ($pdo, $client ["id_utilisateur"])) . '</h3>
 				</div>
 
-				<div>
-					<?php
-						echo($html2);
-
-					?>
-				</div>
+				<div>' . $html2 . '</div>
 
 				<form class="envoie" enctype="multipart/form-data" action="php/messagerie_action.php" method="POST">
-					<textarea name="message"  placeholder= "Ecrivez votre message..." ></textarea>
+					<textarea name="message" placeholder= "Ecrivez votre message..."></textarea>
 
-					<?php if (isset($_POST["origine"])) : ?>
-						<input type="hidden" name="origine" value="<?= $_POST["origine"] ?>" />
-					<?php else : ?>
-						<input type="hidden" name="origine" value="<?= $_SERVER['PHP_SELF'] ?>" />
-					<?php endif; ?>
+					<input type="hidden" name="origine" value="' . ($_POST["origine"] ?? $_SERVER['PHP_SELF']) . '" />
+                    <input type="hidden" name="cible" value="' . $client["id_utilisateur"] .'" />
 
-					<label>
+                    <label>
 						<i class="fa-solid fa-plus" style="font-size: 24px; border: 1px solid black; padding: 16px 10px 16px 10px; "></i>
-						<input name="userfile3" type="file" style=" display: none; visibility: none;">
+						<input name="userfile3" type="file" style=" display: none; visibility: none;" />
 					</label>
 
 					<button type="submit" class="comment_m"> <i class="fa-solid fa-location-arrow"></i> </button>
 				</form>
 			</article>
-		</section>
+		</section>';
+     }
 
-	<?php if ( $_SESSION["identification"]["role"] == 'client') : ?>
-		<button type="button" id="messagerie">
-			<i class="fa-solid fa-comment-dots"></i>
-			<span class="badge"></span>
-		</button>
-	<?php endif; ?>
-<?php endif; ?>
+	 echo($html3);
+?>

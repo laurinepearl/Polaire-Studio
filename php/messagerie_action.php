@@ -19,10 +19,16 @@
         $cible = $_POST["cible"];
     }
 
-	if ($message);
+    if ($message);
     {
+        $info = pathinfo($_FILES['userfile3']['name']);
+
         userMessage($pdo, $message, $id, $cible);
 
+        if (!is_dir("upload/messages"))
+            mkdir("upload/messages");
+
+        move_uploaded_file($_FILES['userfile3']['tmp_name'], 'upload/messages/' . $pdo->lastInsertId()."." . $info['extension']);
 
 
     // On redirige vers la page d'accueil sans le message de

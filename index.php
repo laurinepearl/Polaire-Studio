@@ -8,106 +8,35 @@
 
 	session_start();
 
+	include("php/init_twig.php");
 	include("php/requete_index.php");
 
+	function include_get_contents($file)
+	{
+		// https://stackoverflow.com/a/18190546
+		include("php/requete_index.php");
 
+		ob_start();
+		include($file);
+		$output = ob_get_contents();
+		ob_end_clean();
 
+		return $output;
+	}
+
+	echo $twig->render("index.twig",
+	[
+		"titre" => $titre [$lang],
+		"soustitre" => $soustitre [$lang],
+		"aboutus" => $aboutus [$lang],
+		"contenu1" => $contenu1 [$lang],
+		"savoir" => $savoir [$lang],
+		"tatoo" => $tattoo [$lang],
+		"contenu2" => $contenu2 [$lang],
+		"decouvrir" => $decouvrir [$lang],
+		"header" => include_get_contents("header.php"),
+		"connexion" => include_get_contents("connexion.php"),
+		"messagerie" => include_get_contents("messagerie.php"),
+		"footer" => include_get_contents("footer.php")
+	]);
 ?>
-
-<html lang="fr">
-	<head>
-		<meta charset="utf-8">
-
-		<link rel="stylesheet" type="text/css" href="scss/index/index.css" />
-		<link rel="stylesheet" href="scss/reset.css">
-
-		<script src="https://kit.fontawesome.com/b2ac465a5f.js" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
-
-		<script src="js/script.js" defer></script>
-		<script src="js/index.js" defer></script>
-
-		<title>Polaire Studio</title>
-	</head>
-	<body onload="demarrer();">
-		<header class="header">
-			<?php
-				include("header.php");
-			?>
-		</header>
-
-		<section id="co">
-			<?php
-				include("connexion.php");
-			?>
-		</section>
-
-		<section class="premiere">
-			<h2><?php echo $titre [$lang]; ?></h2>
-
-			<h3><?php echo $soustitre [$lang]; ?></h3>
-
-			<img src="images/photo_accueil.png" alt="" />
-
-			<img src="images/photo_accueil2.png" alt="" />
-
-			<img src="images/photo_accueil4.png" alt="" />
-		</section>
-
-
-		<section class="deuxieme">
-			<article class="shop">
-				<h2><?php echo $aboutus [$lang]; ?></h2>
-
-				<img src="images/tattooshop.jpg">
-
-				<p>
-					<?php echo $contenu1 [$lang]; ?>
-				</p>
-
-				<a href="apropos.php"> <?php echo $savoir [$lang]; ?></a>
-			</article>
-			<article class="image">
-				<h2 class="tatoo"><?php echo $tattoo [$lang]; ?></h2>
-
-                	<img id="show" src="images/caroussel/rea5.jpg" alt="Paysage" />
-
-				<p>
-					<?php echo $contenu2 [$lang]; ?>
-				</p>
-
-				<a href="tatouages.php"><?php echo $decouvrir [$lang]; ?></a>
-			</article>
-		</section>
-
-		<section class="troisieme">
-			<article class="social">
-				<a class="btn" href="https://www.instagram.com/laurinepearl_/">
-					<i class="fa-brands fa-instagram"></i>
-				</a>
-
-				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/">
-					<i class="fa-brands fa-pinterest"></i>
-				</a>
-
-				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543">
-					<i class="fa-brands fa-facebook"></i>
-				</a>
-			</article>
-		</section>
-
-		<?php
-				include("messagerie.php");
-		?>
-
-		<a id="remonter" href="#" >
-			<i class="fas fa-chevron-up"></i>
-		</a>
-
-		<footer>
-			<?php
-				include("footer.php");
-			?>
-		</footer>
-	</body>
-</html>

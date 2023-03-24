@@ -45,13 +45,13 @@
 
 	function findAvatar($id)
 	{
-		$files = scandir("php/upload/");
+		$files = scandir("php/upload/commentaires/");
 
 		foreach ($files as $file)
 		{
 			if (strpos($file, "$id.") !== false)
 			{
-				return "php/upload/$file";
+				return "php/upload/commentaires/$file";
 			}
 		}
 
@@ -64,11 +64,11 @@
 	$html = "";
 	$moyenne = 0;
 	$nbrecomment = count($commentaires);
+
 	foreach($commentaires as $commentaire)
 	{
 		$moyenne = $moyenne + $commentaire["note"];
 		$html.='<div>
-		<hr>
 
 		<h4>'.prenom ($pdo, $commentaire ["id_utilisateur"]).'</h4>
 
@@ -89,7 +89,11 @@
 
 	}
 
-	$moyenne = $moyenne / count($commentaires);
+	if ($nbrecomment == 0) {
+		$moyenne = 0;
+	} else {
+		$moyenne = $moyenne / $nbrecomment;
+	} 
 ?>
 
 <html lang="fr">
@@ -123,42 +127,96 @@
 
 		<section class="premiere">
 			<h1> <?php echo $aboutus [$lang]; ?></h1>
-
 			<article>
-				<h2><?php echo $approche [$lang]; ?></h2>
-				<p><?php echo $contenu4 [$lang]; ?></p>
-			</article>
+			<div>
+				<h2>Provoquer de <span>l'émotion chez vous </span> </h2>
+				<p class="des">POUR AFFIRMER VOTRE PERSONNALITÉ, APPORTER DE L'AUTHENTICITÉ ET DE L'ORIGINALITÉ GRÂCE AUX TATOUAGES</p>
 
-			<article>
-				<h2><?php echo $reflexion [$lang]; ?></h2>
-				<p><?php echo $contenu5 [$lang]; ?></p>
-			</article>
-		</section>
+				<a> CONTACTEZ-NOUS </a>
 
-		<section class="deuxieme">
-			<h2> <?php echo $salon [$lang]; ?> </h2>
-
-			<article>
-				<img class="myImg" src="images/salon3.jpg" alt="">
-				<img class="myImg" src="images/tattooshop.jpg" alt="">
-				<img class="myImg" src="images/salon2.jpg" alt="">
-			</article>
-
-			<article>
-				<img class="myImg" src="images/salon4.jpg" alt="">
-				<img class="myImg" src="images/salon.jpg" alt="">
-				<img class="myImg" src="images/encre.jpg" alt="">
-			</article>
-
-			<div id="myModal" class="modal">
-
-				<span class="close">&times;</span>
-
-				<img class="modal-content" id="img01">
-
-				<div id="caption"></div>
 			</div>
+
+			<div class="video">
+				<video autoplay muted loop >
+					<source src="images/video/tattoo_video4.mp4" type="video/mp4" />
+				</video>
+			</div>
+			</article>
+
 		</section>
+
+<section class="deuxieme">
+<h2> <?php echo $salon [$lang]; ?> </h2>
+
+		<article class="row">
+  <div class="column">
+    <img src="images/salon/salon3.jpg" onclick="openModal();currentSlide(1)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/salon/tattooshop.jpg" onclick="openModal();currentSlide(2)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/salon/salon2.jpg" onclick="openModal();currentSlide(3)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/salon/salon4.jpg" onclick="openModal();currentSlide(4)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/salon/salon.jpg" onclick="openModal();currentSlide(5)" class="hover-shadow">
+  </div>
+  <div class="column">
+    <img src="images/salon/encre.jpg" onclick="openModal();currentSlide(6)" class="hover-shadow">
+  </div>
+</article>
+
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+      <img src="images/salon/salon3.jpg" >
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+      <img src="images/salon/tattooshop.jpg">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+      <img src="images/salon/salon2.jpg">
+    </div>
+
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+      <img src="images/salon/salon4.jpg">
+    </div>
+
+	<div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+      <img src="images/salon/salon.jpg">
+    </div>
+
+	<div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+      <img src="images/salon/encre.jpg">
+    </div>
+
+    <!-- fleches -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    
+    <!-- <div class="caption-container">
+      <p id="caption"></p>
+    </div> -->
+
+
+  </div>
+</div>
+</section>
 
 		<section class="cinquieme">
 			<h2>Commentaires de nos Clients</h2>
@@ -308,15 +366,15 @@
 
 		<section class="troisieme">
 			<article class="social">
-				<a class="btn" href="https://www.instagram.com/laurinepearl_/">
+				<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
 					<i class="fa-brands fa-instagram"></i>
 				</a>
 
-				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/">
+				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
 					<i class="fa-brands fa-pinterest"></i>
 				</a>
 
-				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543">
+				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
 					<i class="fa-brands fa-facebook"></i>
 				</a>
 			</article>

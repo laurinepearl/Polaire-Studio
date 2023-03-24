@@ -42,7 +42,7 @@
 			<h1><?php echo $contact2 [$lang]; ?></h1>
 
 			<article>
-				<p><?php echo $contenu6 [$lang]; ?></p>
+				<p class ="a"><?php echo $contenu6 [$lang]; ?></p>
 
 				<div>
 					<p class="adresse">15 Avenue de la République - Nice</p>
@@ -62,9 +62,9 @@
 					echo("<div class='snackbar'>Votre message a été envoyé avec succès.</div>\n");
 				}
 
-				if (isset($_GET["erreur"]))
+				if (isset($_GET["erreur"]) && $_GET["erreur"] == "3")
 				{
-					echo($_SESSION["erreur"]);
+					echo("<div class='snackbar'>" . $_SESSION["erreur"] ."</div>\n");
 				}
 			?>
 				<input class="contaact" type="text" name="nom"  placeholder="Nom" required>
@@ -80,15 +80,15 @@
 
 		<section class="troisieme">
 			<article class="social">
-				<a class="btn" href="https://www.instagram.com/laurinepearl_/">
+				<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
 					<i class="fa-brands fa-instagram"></i>
 				</a>
 
-				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/">
+				<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
 					<i class="fa-brands fa-pinterest"></i>
 				</a>
 
-				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543">
+				<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
 					<i class="fa-brands fa-facebook"></i>
 				</a>
 			</article>

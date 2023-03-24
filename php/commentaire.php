@@ -24,7 +24,9 @@
 
         userComment($pdo, $mois, $annee, $etoile, $commentaire, $id);
 
-        move_uploaded_file($_FILES['userfile']['tmp_name'], 'upload/' . $pdo->lastInsertId()."." . $info['extension']);
+        mkdir("upload/commentaires/");
+
+        move_uploaded_file($_FILES['userfile']['tmp_name'], 'upload/commentaires/' . $pdo->lastInsertId()."." . $info['extension']);
 
 
     // On redirige vers la page d'accueil sans le message de

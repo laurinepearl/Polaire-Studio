@@ -1,9 +1,9 @@
 <a href="index.php?lang=<?php echo($lang); ?>" class="logo">
-	<img src="images/logo_h.svg" alt="">
+	<img src="images/logo/logo_h.svg" alt="">
 </a>
 
 <a href="index.php?lang=<?php echo($lang); ?>" >
-	<img class="logo2" src="images/logo_2emeformat.svg">
+	<img class="logo2" src="images/logo/logo_2emeformat.svg">
 </a>
 
 <nav class="navbar">
@@ -32,6 +32,7 @@
 		<?php else : ?>
 			<a class="btn" href="profil_tatoueur.php">
 				<i class="fa-solid fa-user"></i>
+				<span class="badge"></span>
 			</a>
 		<?php endif; ?>
 	<?php endif; ?>

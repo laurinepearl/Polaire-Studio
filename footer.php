@@ -1,18 +1,18 @@
 <section>
-	<img src="images/logo.svg" alt="">
+	<img src="images/logo/logo.svg" alt="">
 
 	<br />
 
 	<article class="">
-		<a class="btn" href="https://www.instagram.com/laurinepearl_/">
+		<a class="btn" href="https://www.instagram.com/laurinepearl_/" target="_blank">
 			<i class="fa-brands fa-instagram"></i>
 		</a>
 
-		<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/">
+		<a class="btn" href="https://www.pinterest.fr/laurineferreira29/_saved/" target="_blank">
 			<i class="fa-brands fa-pinterest"></i>
 		</a>
 
-		<a class="btn" href="https://www.facebook.com/laurine.ferreira.543">
+		<a class="btn" href="https://www.facebook.com/laurine.ferreira.543" target="_blank">
 			<i class="fa-brands fa-facebook"></i>
 		</a>
 	</article>
@@ -22,7 +22,7 @@
 	<br /><br /><br />
 
 	<a class="link" href="tel:0699999999">06.99.99.99.99</a>
-	<a href="">cliquer ici pour voir la localisation</a>
+	<a href="https://www.google.com/maps/place/Nice/@43.703754,7.249808,14z/data=!4m5!3m4!1s0x12cdd0106a852d31:0x40819a5fd979a70!8m2!3d43.7101728!4d7.2619532?hl=fr" target="_blank">cliquer ici pour voir la localisation</a>
 </section>
 
 <section>
